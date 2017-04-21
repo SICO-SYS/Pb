@@ -15,24 +15,35 @@ message ResponseMsg {
   string msg = 2;
 }
 
-message OpenRequest {
+message AAA_OpenRequest {
   string request = 1;
 }
 
-message APIKeypair {
+message AAA_APIKeypair {
   string key = 1;
   string secret = 2;
 }
 
-message APIToken {
+message AAA_APIToken {
   string key = 1;
   string token = 2;
 }
 
-service Open {
-  rpc RegUser(OpenRequest) returns (APIKeypair){}
+message AAA_ThirdpartyKey {
+  AAA_APIToken apitoken = 1;
+  string apitype = 2;
+  string id = 3;
+  string key = 4;
 }
 
-service Secret {
-  rpc APIAuth(APIKeypair) returns (ResponseMsg){}
+service AAA_Open {
+  rpc AAA_RegUser(AAA_OpenRequest) returns (AAA_APIKeypair){}
+}
+
+service AAA_Secret {
+  rpc AAA_Auth(AAA_APIToken) returns (ResponseMsg){}
+  rpc AAA_ThirdKeypair(AAA_ThirdpartyKey) returns (ResponseMsg){}
+//  rpc AAA_ApplyAuth(AAA_APIKeypair) returns (ResponseMsg){}
+//  rpc AAA_AgreeAuth(AAA_APIKeypair) returns (ResponseMsg){}
+//  rpc AAA_Policy(AAA_APIKeypair) returns (ResponseMsg){}
 }
