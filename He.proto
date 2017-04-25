@@ -15,29 +15,31 @@ message ResponseMsg {
   string msg = 2;
 }
 
-message AAA_OpenRequest {
-  string request = 1;
+message AAA_RegRequest {
+  string random = 1;
+  string email = 2;
 }
 
 message AAA_APIKeypair {
-  string key = 1;
-  string secret = 2;
+  string id = 1;
+  string key = 2;
 }
 
 message AAA_APIToken {
-  string key = 1;
-  string token = 2;
+  string id = 1;
+  string signature = 2;
 }
 
 message AAA_ThirdpartyKey {
   AAA_APIToken apitoken = 1;
   string apitype = 2;
-  string id = 3;
-  string key = 4;
+  string name = 3;
+  string id = 4;
+  string key = 5;
 }
 
 service AAA_Open {
-  rpc AAA_RegUser(AAA_OpenRequest) returns (AAA_APIKeypair){}
+  rpc AAA_RegUser(AAA_RegRequest) returns (AAA_APIKeypair){}
 }
 
 service AAA_Secret {
