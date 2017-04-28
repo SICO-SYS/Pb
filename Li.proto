@@ -1,0 +1,36 @@
+/*
+
+LICENSE:  MIT
+Author:   sine
+Email:    sinerwr@gmail.com
+
+*/
+
+syntax = "proto3";
+
+package pb;
+
+message Cloud_response {
+  int32 code = 1;
+  string msg = 2;
+  bytes data = 3;
+}
+
+message Cloud_params {
+  string key = 1;
+  string value = 2;
+}
+
+message Cloud_request {
+  string bsns = 1;
+  string action = 2;
+  string region = 3;
+  string cloudId = 4;
+  string cloudKey = 5;
+  string id = 6;
+  repeated Cloud_params params = 7;
+}
+
+service Cloud_API {
+  rpc qcloud(Cloud_request) returns (Cloud_response) {}
+}
