@@ -45,7 +45,7 @@ service AAA_Open {
 service AAA_Secret {
   rpc AAA_Auth(AAA_APIToken) returns (ResponseMsg){}
   rpc AAA_ThirdKeypair(AAA_ThirdpartyKey) returns (ResponseMsg){}
-  rpc AAA_GetThirdKey(AAA_ThirdpartyKey) returns (ResponseMsg){}
+  rpc AAA_GetThirdKey(AAA_ThirdpartyKey) returns (AAA_APIKeypair){}
 //  rpc AAA_ApplyAuth(AAA_APIKeypair) returns (ResponseMsg){}
 //  rpc AAA_AgreeAuth(AAA_APIKeypair) returns (ResponseMsg){}
 //  rpc AAA_Policy(AAA_APIKeypair) returns (ResponseMsg){}
