@@ -27,7 +27,7 @@ type CloudResponse struct {
 func (m *CloudResponse) Reset()                    { *m = CloudResponse{} }
 func (m *CloudResponse) String() string            { return proto.CompactTextString(m) }
 func (*CloudResponse) ProtoMessage()               {}
-func (*CloudResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (*CloudResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
 func (m *CloudResponse) GetCode() int32 {
 	if m != nil {
@@ -58,7 +58,7 @@ type CloudParams struct {
 func (m *CloudParams) Reset()                    { *m = CloudParams{} }
 func (m *CloudParams) String() string            { return proto.CompactTextString(m) }
 func (*CloudParams) ProtoMessage()               {}
-func (*CloudParams) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (*CloudParams) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
 
 func (m *CloudParams) GetKey() string {
 	if m != nil {
@@ -87,7 +87,7 @@ type CloudRequest struct {
 func (m *CloudRequest) Reset()                    { *m = CloudRequest{} }
 func (m *CloudRequest) String() string            { return proto.CompactTextString(m) }
 func (*CloudRequest) ProtoMessage()               {}
-func (*CloudRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+func (*CloudRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
 
 func (m *CloudRequest) GetBsns() string {
 	if m != nil {
@@ -216,9 +216,9 @@ var _Cloud_API_serviceDesc = grpc.ServiceDesc{
 	Metadata: "Li.proto",
 }
 
-func init() { proto.RegisterFile("Li.proto", fileDescriptor1) }
+func init() { proto.RegisterFile("Li.proto", fileDescriptor2) }
 
-var fileDescriptor1 = []byte{
+var fileDescriptor2 = []byte{
 	// 275 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x4c, 0x91, 0x51, 0x4b, 0xc3, 0x30,
 	0x14, 0x85, 0x6d, 0xbb, 0x76, 0xeb, 0x75, 0x8e, 0x79, 0x11, 0x09, 0x7b, 0x2a, 0x7d, 0xea, 0x53,

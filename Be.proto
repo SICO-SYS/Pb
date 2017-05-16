@@ -1,0 +1,25 @@
+/*
+
+LICENSE:  MIT
+Author:   sine
+Email:    sinerwr@gmail.com
+
+*/
+
+syntax = "proto3";
+
+package pb;
+
+message Asset_Req {
+  string id = 1;
+  string name = 2;
+  map<string,string> param = 3;
+}
+
+message Asset_Res {
+  int32 code = 1;
+}
+
+service Aseet {
+  rpc Asset_template(Asset_Req) returns (Asset_Res) {};
+}

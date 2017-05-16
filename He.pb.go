@@ -2,23 +2,6 @@
 // source: He.proto
 // DO NOT EDIT!
 
-/*
-Package pb is a generated protocol buffer package.
-
-It is generated from these files:
-	He.proto
-	Li.proto
-
-It has these top-level messages:
-	ResponseMsg
-	AAA_RegRequest
-	AAA_APIKeypair
-	AAA_APIToken
-	AAA_ThirdpartyKey
-	CloudResponse
-	CloudParams
-	CloudRequest
-*/
 package pb
 
 import proto "github.com/golang/protobuf/proto"
@@ -35,12 +18,6 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the proto package it is being compiled against.
-// A compilation error at this line likely means your copy of the
-// proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
-
 type ResponseMsg struct {
 	Code int32  `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
 	Msg  string `protobuf:"bytes,2,opt,name=msg" json:"msg,omitempty"`
@@ -49,7 +26,7 @@ type ResponseMsg struct {
 func (m *ResponseMsg) Reset()                    { *m = ResponseMsg{} }
 func (m *ResponseMsg) String() string            { return proto.CompactTextString(m) }
 func (*ResponseMsg) ProtoMessage()               {}
-func (*ResponseMsg) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+func (*ResponseMsg) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
 func (m *ResponseMsg) GetCode() int32 {
 	if m != nil {
@@ -73,7 +50,7 @@ type AAA_RegRequest struct {
 func (m *AAA_RegRequest) Reset()                    { *m = AAA_RegRequest{} }
 func (m *AAA_RegRequest) String() string            { return proto.CompactTextString(m) }
 func (*AAA_RegRequest) ProtoMessage()               {}
-func (*AAA_RegRequest) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+func (*AAA_RegRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
 
 func (m *AAA_RegRequest) GetRandom() string {
 	if m != nil {
@@ -97,7 +74,7 @@ type AAA_APIKeypair struct {
 func (m *AAA_APIKeypair) Reset()                    { *m = AAA_APIKeypair{} }
 func (m *AAA_APIKeypair) String() string            { return proto.CompactTextString(m) }
 func (*AAA_APIKeypair) ProtoMessage()               {}
-func (*AAA_APIKeypair) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+func (*AAA_APIKeypair) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
 
 func (m *AAA_APIKeypair) GetId() string {
 	if m != nil {
@@ -121,7 +98,7 @@ type AAA_APIToken struct {
 func (m *AAA_APIToken) Reset()                    { *m = AAA_APIToken{} }
 func (m *AAA_APIToken) String() string            { return proto.CompactTextString(m) }
 func (*AAA_APIToken) ProtoMessage()               {}
-func (*AAA_APIToken) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+func (*AAA_APIToken) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
 
 func (m *AAA_APIToken) GetId() string {
 	if m != nil {
@@ -148,7 +125,7 @@ type AAA_ThirdpartyKey struct {
 func (m *AAA_ThirdpartyKey) Reset()                    { *m = AAA_ThirdpartyKey{} }
 func (m *AAA_ThirdpartyKey) String() string            { return proto.CompactTextString(m) }
 func (*AAA_ThirdpartyKey) ProtoMessage()               {}
-func (*AAA_ThirdpartyKey) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{4} }
+func (*AAA_ThirdpartyKey) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
 
 func (m *AAA_ThirdpartyKey) GetApitoken() *AAA_APIToken {
 	if m != nil {
@@ -395,9 +372,9 @@ var _AAA_Secret_serviceDesc = grpc.ServiceDesc{
 	Metadata: "He.proto",
 }
 
-func init() { proto.RegisterFile("He.proto", fileDescriptor0) }
+func init() { proto.RegisterFile("He.proto", fileDescriptor1) }
 
-var fileDescriptor0 = []byte{
+var fileDescriptor1 = []byte{
 	// 360 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x92, 0x4f, 0x4f, 0xf2, 0x40,
 	0x10, 0xc6, 0x69, 0xf9, 0xf3, 0xc2, 0xf0, 0x06, 0x78, 0x27, 0xaf, 0xa6, 0x21, 0x1e, 0x48, 0x4f,
