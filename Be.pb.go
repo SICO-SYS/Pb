@@ -12,18 +12,17 @@ It is generated from these files:
 	general.proto
 
 It has these top-level messages:
-	Asset_Req
-	Asset_CloudReq
-	Asset_Res
-	ResponseMsg
-	AAA_RegRequest
-	AAA_APIKeypair
-	AAA_APIToken
-	AAA_ThirdpartyKey
-	CloudResponse
-	CloudRequest
-	GeneralMsgIn
-	GeneralMsgOut
+	AssetTemplateCall
+	AssetCloudCall
+	AssetMsgBack
+	AAAGenerateTokenCall
+	AAAGenerateTokenBack
+	AAATokenCall
+	AAATokenBack
+	CloudAPICall
+	CloudAPIBack
+	GeneralMsgCall
+	GeneralMsgBack
 */
 package pb
 
@@ -47,90 +46,98 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type Asset_Req struct {
+type AssetTemplateCall struct {
 	Id    string            `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	Name  string            `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
 	Param map[string]string `protobuf:"bytes,3,rep,name=param" json:"param,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 }
 
-func (m *Asset_Req) Reset()                    { *m = Asset_Req{} }
-func (m *Asset_Req) String() string            { return proto.CompactTextString(m) }
-func (*Asset_Req) ProtoMessage()               {}
-func (*Asset_Req) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+func (m *AssetTemplateCall) Reset()                    { *m = AssetTemplateCall{} }
+func (m *AssetTemplateCall) String() string            { return proto.CompactTextString(m) }
+func (*AssetTemplateCall) ProtoMessage()               {}
+func (*AssetTemplateCall) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
 
-func (m *Asset_Req) GetId() string {
+func (m *AssetTemplateCall) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-func (m *Asset_Req) GetName() string {
+func (m *AssetTemplateCall) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *Asset_Req) GetParam() map[string]string {
+func (m *AssetTemplateCall) GetParam() map[string]string {
 	if m != nil {
 		return m.Param
 	}
 	return nil
 }
 
-type Asset_CloudReq struct {
+type AssetCloudCall struct {
 	Id    string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	Cloud string `protobuf:"bytes,2,opt,name=cloud" json:"cloud,omitempty"`
-	Param []byte `protobuf:"bytes,3,opt,name=param,proto3" json:"param,omitempty"`
+	Data  []byte `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
 }
 
-func (m *Asset_CloudReq) Reset()                    { *m = Asset_CloudReq{} }
-func (m *Asset_CloudReq) String() string            { return proto.CompactTextString(m) }
-func (*Asset_CloudReq) ProtoMessage()               {}
-func (*Asset_CloudReq) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+func (m *AssetCloudCall) Reset()                    { *m = AssetCloudCall{} }
+func (m *AssetCloudCall) String() string            { return proto.CompactTextString(m) }
+func (*AssetCloudCall) ProtoMessage()               {}
+func (*AssetCloudCall) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
 
-func (m *Asset_CloudReq) GetId() string {
+func (m *AssetCloudCall) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-func (m *Asset_CloudReq) GetCloud() string {
+func (m *AssetCloudCall) GetCloud() string {
 	if m != nil {
 		return m.Cloud
 	}
 	return ""
 }
 
-func (m *Asset_CloudReq) GetParam() []byte {
+func (m *AssetCloudCall) GetData() []byte {
 	if m != nil {
-		return m.Param
+		return m.Data
 	}
 	return nil
 }
 
-type Asset_Res struct {
-	Code int32 `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
+type AssetMsgBack struct {
+	Code int64  `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
+	Msg  string `protobuf:"bytes,2,opt,name=msg" json:"msg,omitempty"`
 }
 
-func (m *Asset_Res) Reset()                    { *m = Asset_Res{} }
-func (m *Asset_Res) String() string            { return proto.CompactTextString(m) }
-func (*Asset_Res) ProtoMessage()               {}
-func (*Asset_Res) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+func (m *AssetMsgBack) Reset()                    { *m = AssetMsgBack{} }
+func (m *AssetMsgBack) String() string            { return proto.CompactTextString(m) }
+func (*AssetMsgBack) ProtoMessage()               {}
+func (*AssetMsgBack) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
 
-func (m *Asset_Res) GetCode() int32 {
+func (m *AssetMsgBack) GetCode() int64 {
 	if m != nil {
 		return m.Code
 	}
 	return 0
 }
 
+func (m *AssetMsgBack) GetMsg() string {
+	if m != nil {
+		return m.Msg
+	}
+	return ""
+}
+
 func init() {
-	proto.RegisterType((*Asset_Req)(nil), "pb.Asset_Req")
-	proto.RegisterType((*Asset_CloudReq)(nil), "pb.Asset_CloudReq")
-	proto.RegisterType((*Asset_Res)(nil), "pb.Asset_Res")
+	proto.RegisterType((*AssetTemplateCall)(nil), "pb.AssetTemplateCall")
+	proto.RegisterType((*AssetCloudCall)(nil), "pb.AssetCloudCall")
+	proto.RegisterType((*AssetMsgBack)(nil), "pb.AssetMsgBack")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -141,97 +148,97 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for Aseet service
+// Client API for Asset service
 
-type AseetClient interface {
-	AssetTemplate(ctx context.Context, in *Asset_Req, opts ...grpc.CallOption) (*Asset_Res, error)
-	AssetStorein(ctx context.Context, in *Asset_CloudReq, opts ...grpc.CallOption) (*Asset_Res, error)
+type AssetClient interface {
+	AddTemplateRPC(ctx context.Context, in *AssetTemplateCall, opts ...grpc.CallOption) (*AssetMsgBack, error)
+	AddAssetRPC(ctx context.Context, in *AssetCloudCall, opts ...grpc.CallOption) (*AssetMsgBack, error)
 }
 
-type aseetClient struct {
+type assetClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewAseetClient(cc *grpc.ClientConn) AseetClient {
-	return &aseetClient{cc}
+func NewAssetClient(cc *grpc.ClientConn) AssetClient {
+	return &assetClient{cc}
 }
 
-func (c *aseetClient) AssetTemplate(ctx context.Context, in *Asset_Req, opts ...grpc.CallOption) (*Asset_Res, error) {
-	out := new(Asset_Res)
-	err := grpc.Invoke(ctx, "/pb.Aseet/Asset_template", in, out, c.cc, opts...)
+func (c *assetClient) AddTemplateRPC(ctx context.Context, in *AssetTemplateCall, opts ...grpc.CallOption) (*AssetMsgBack, error) {
+	out := new(AssetMsgBack)
+	err := grpc.Invoke(ctx, "/pb.Asset/AddTemplateRPC", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *aseetClient) AssetStorein(ctx context.Context, in *Asset_CloudReq, opts ...grpc.CallOption) (*Asset_Res, error) {
-	out := new(Asset_Res)
-	err := grpc.Invoke(ctx, "/pb.Aseet/Asset_storein", in, out, c.cc, opts...)
+func (c *assetClient) AddAssetRPC(ctx context.Context, in *AssetCloudCall, opts ...grpc.CallOption) (*AssetMsgBack, error) {
+	out := new(AssetMsgBack)
+	err := grpc.Invoke(ctx, "/pb.Asset/AddAssetRPC", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for Aseet service
+// Server API for Asset service
 
-type AseetServer interface {
-	AssetTemplate(context.Context, *Asset_Req) (*Asset_Res, error)
-	AssetStorein(context.Context, *Asset_CloudReq) (*Asset_Res, error)
+type AssetServer interface {
+	AddTemplateRPC(context.Context, *AssetTemplateCall) (*AssetMsgBack, error)
+	AddAssetRPC(context.Context, *AssetCloudCall) (*AssetMsgBack, error)
 }
 
-func RegisterAseetServer(s *grpc.Server, srv AseetServer) {
-	s.RegisterService(&_Aseet_serviceDesc, srv)
+func RegisterAssetServer(s *grpc.Server, srv AssetServer) {
+	s.RegisterService(&_Asset_serviceDesc, srv)
 }
 
-func _Aseet_AssetTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Asset_Req)
+func _Asset_AddTemplateRPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AssetTemplateCall)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AseetServer).AssetTemplate(ctx, in)
+		return srv.(AssetServer).AddTemplateRPC(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.Aseet/AssetTemplate",
+		FullMethod: "/pb.Asset/AddTemplateRPC",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AseetServer).AssetTemplate(ctx, req.(*Asset_Req))
+		return srv.(AssetServer).AddTemplateRPC(ctx, req.(*AssetTemplateCall))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Aseet_AssetStorein_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Asset_CloudReq)
+func _Asset_AddAssetRPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AssetCloudCall)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AseetServer).AssetStorein(ctx, in)
+		return srv.(AssetServer).AddAssetRPC(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.Aseet/AssetStorein",
+		FullMethod: "/pb.Asset/AddAssetRPC",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AseetServer).AssetStorein(ctx, req.(*Asset_CloudReq))
+		return srv.(AssetServer).AddAssetRPC(ctx, req.(*AssetCloudCall))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Aseet_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "pb.Aseet",
-	HandlerType: (*AseetServer)(nil),
+var _Asset_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "pb.Asset",
+	HandlerType: (*AssetServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Asset_template",
-			Handler:    _Aseet_AssetTemplate_Handler,
+			MethodName: "AddTemplateRPC",
+			Handler:    _Asset_AddTemplateRPC_Handler,
 		},
 		{
-			MethodName: "Asset_storein",
-			Handler:    _Aseet_AssetStorein_Handler,
+			MethodName: "AddAssetRPC",
+			Handler:    _Asset_AddAssetRPC_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -241,21 +248,23 @@ var _Aseet_serviceDesc = grpc.ServiceDesc{
 func init() { proto.RegisterFile("Be.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 252 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x51, 0xbd, 0x4e, 0xc3, 0x30,
-	0x10, 0xc6, 0x0e, 0x46, 0xf4, 0xa0, 0x15, 0x3a, 0x75, 0x88, 0xba, 0x50, 0x65, 0xca, 0x64, 0xa1,
-	0xc2, 0x50, 0xb1, 0x15, 0xc4, 0xc6, 0x80, 0xf2, 0x02, 0xc8, 0x69, 0x6e, 0x88, 0x48, 0x62, 0x13,
-	0xbb, 0x48, 0x7d, 0x14, 0xde, 0x16, 0xd9, 0xa9, 0x89, 0x22, 0xd8, 0xee, 0xfb, 0x7c, 0xf7, 0xfd,
-	0xc8, 0x70, 0xf9, 0x44, 0xd2, 0xf4, 0xda, 0x69, 0xe4, 0xa6, 0xcc, 0xbe, 0x19, 0xcc, 0x76, 0xd6,
-	0x92, 0x7b, 0x2f, 0xe8, 0x13, 0x17, 0xc0, 0xeb, 0x2a, 0x65, 0x6b, 0x96, 0xcf, 0x0a, 0x5e, 0x57,
-	0x88, 0x70, 0xde, 0xa9, 0x96, 0x52, 0x1e, 0x98, 0x30, 0xa3, 0x04, 0x61, 0x54, 0xaf, 0xda, 0x34,
-	0x59, 0x27, 0xf9, 0xd5, 0x26, 0x95, 0xa6, 0x94, 0xbf, 0x0a, 0xf2, 0xcd, 0x3f, 0xbd, 0x74, 0xae,
-	0x3f, 0x16, 0xc3, 0xda, 0x6a, 0x0b, 0x30, 0x92, 0x78, 0x03, 0xc9, 0x07, 0x1d, 0x4f, 0x16, 0x7e,
-	0xc4, 0x25, 0x88, 0x2f, 0xd5, 0x1c, 0xa2, 0xc9, 0x00, 0x1e, 0xf9, 0x96, 0x65, 0xaf, 0xb0, 0x18,
-	0x84, 0x9f, 0x1b, 0x7d, 0xa8, 0xfe, 0xcb, 0xb7, 0x04, 0xb1, 0xf7, 0x6f, 0xf1, 0x36, 0x00, 0xcf,
-	0xc6, 0x84, 0x2c, 0xbf, 0x3e, 0xe5, 0xc8, 0x6e, 0xc7, 0xa2, 0xd6, 0x17, 0xdb, 0xeb, 0x8a, 0x82,
-	0x94, 0x28, 0xc2, 0xbc, 0xd1, 0x20, 0x76, 0x96, 0xc8, 0xe1, 0x5d, 0xf4, 0x75, 0xd4, 0x9a, 0x46,
-	0x39, 0xc2, 0xf9, 0xa4, 0xe4, 0x6a, 0x02, 0x6d, 0x76, 0x86, 0x0f, 0x30, 0x1f, 0xa0, 0x75, 0xba,
-	0xa7, 0xba, 0x43, 0x1c, 0x37, 0x62, 0xf8, 0x3f, 0x57, 0xe5, 0x45, 0xf8, 0x86, 0xfb, 0x9f, 0x00,
-	0x00, 0x00, 0xff, 0xff, 0x89, 0x4c, 0x16, 0x47, 0x92, 0x01, 0x00, 0x00,
+	// 275 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x51, 0xcd, 0x6a, 0x83, 0x40,
+	0x10, 0xae, 0x5a, 0x4b, 0x3b, 0x09, 0x92, 0x0e, 0x29, 0x48, 0x4e, 0xe2, 0xc9, 0x93, 0x87, 0xf4,
+	0x87, 0xd0, 0x9e, 0x8c, 0xf4, 0x52, 0x28, 0x84, 0xa5, 0x2f, 0xb0, 0xba, 0x4b, 0x08, 0x59, 0xe3,
+	0xa2, 0x9b, 0x42, 0xe8, 0x13, 0xf5, 0x2d, 0xcb, 0x4e, 0xd4, 0x1e, 0xe2, 0xed, 0x9b, 0x6f, 0xbf,
+	0x9f, 0x19, 0x16, 0x6e, 0xd7, 0x32, 0xd5, 0x4d, 0x6d, 0x6a, 0x74, 0x75, 0x11, 0xff, 0x3a, 0x70,
+	0x9f, 0xb5, 0xad, 0x34, 0x5f, 0xb2, 0xd2, 0x8a, 0x1b, 0x99, 0x73, 0xa5, 0x30, 0x00, 0x77, 0x27,
+	0x42, 0x27, 0x72, 0x92, 0x3b, 0xe6, 0xee, 0x04, 0x22, 0x5c, 0x1f, 0x78, 0x25, 0x43, 0x97, 0x18,
+	0xc2, 0xf8, 0x02, 0xbe, 0xe6, 0x0d, 0xaf, 0x42, 0x2f, 0xf2, 0x92, 0xc9, 0x32, 0x4a, 0x75, 0x91,
+	0x5e, 0x24, 0xa5, 0x1b, 0x2b, 0x79, 0x3f, 0x98, 0xe6, 0xc4, 0xce, 0xf2, 0xc5, 0x0a, 0xe0, 0x9f,
+	0xc4, 0x19, 0x78, 0x7b, 0x79, 0xea, 0xaa, 0x2c, 0xc4, 0x39, 0xf8, 0xdf, 0x5c, 0x1d, 0xfb, 0xb2,
+	0xf3, 0xf0, 0xea, 0xae, 0x9c, 0xf8, 0x03, 0x02, 0x2a, 0xc8, 0x55, 0x7d, 0x14, 0xa3, 0x7b, 0xce,
+	0xc1, 0x2f, 0xed, 0x63, 0xef, 0xa5, 0xc1, 0x6e, 0x2f, 0xb8, 0xe1, 0xa1, 0x17, 0x39, 0xc9, 0x94,
+	0x11, 0x8e, 0x9f, 0x60, 0x4a, 0x59, 0x9f, 0xed, 0x76, 0xcd, 0xcb, 0xbd, 0xd5, 0x94, 0xb5, 0x90,
+	0x94, 0xe5, 0x31, 0xc2, 0x76, 0xb7, 0xaa, 0xdd, 0x76, 0x59, 0x16, 0x2e, 0x7f, 0xc0, 0x27, 0x17,
+	0xbe, 0x41, 0x90, 0x09, 0xd1, 0x5f, 0xca, 0x36, 0x39, 0x3e, 0x8c, 0xde, 0xbf, 0x98, 0x0d, 0x74,
+	0xd7, 0x14, 0x5f, 0xe1, 0x33, 0x4c, 0x32, 0x21, 0x88, 0xb4, 0x4e, 0x1c, 0x24, 0xc3, 0x61, 0x63,
+	0xb6, 0xe2, 0x86, 0x7e, 0xed, 0xf1, 0x2f, 0x00, 0x00, 0xff, 0xff, 0x8f, 0x57, 0xcf, 0x6e, 0xc1,
+	0x01, 0x00, 0x00,
 }

@@ -18,156 +18,99 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-type ResponseMsg struct {
-	Code int32  `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
-	Msg  string `protobuf:"bytes,2,opt,name=msg" json:"msg,omitempty"`
+type AAAGenerateTokenCall struct {
+	Email string `protobuf:"bytes,1,opt,name=email" json:"email,omitempty"`
+	Phone string `protobuf:"bytes,2,opt,name=phone" json:"phone,omitempty"`
 }
 
-func (m *ResponseMsg) Reset()                    { *m = ResponseMsg{} }
-func (m *ResponseMsg) String() string            { return proto.CompactTextString(m) }
-func (*ResponseMsg) ProtoMessage()               {}
-func (*ResponseMsg) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (m *AAAGenerateTokenCall) Reset()                    { *m = AAAGenerateTokenCall{} }
+func (m *AAAGenerateTokenCall) String() string            { return proto.CompactTextString(m) }
+func (*AAAGenerateTokenCall) ProtoMessage()               {}
+func (*AAAGenerateTokenCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
-func (m *ResponseMsg) GetCode() int32 {
-	if m != nil {
-		return m.Code
-	}
-	return 0
-}
-
-func (m *ResponseMsg) GetMsg() string {
-	if m != nil {
-		return m.Msg
-	}
-	return ""
-}
-
-type AAA_RegRequest struct {
-	Random string `protobuf:"bytes,1,opt,name=random" json:"random,omitempty"`
-	Email  string `protobuf:"bytes,2,opt,name=email" json:"email,omitempty"`
-}
-
-func (m *AAA_RegRequest) Reset()                    { *m = AAA_RegRequest{} }
-func (m *AAA_RegRequest) String() string            { return proto.CompactTextString(m) }
-func (*AAA_RegRequest) ProtoMessage()               {}
-func (*AAA_RegRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
-
-func (m *AAA_RegRequest) GetRandom() string {
-	if m != nil {
-		return m.Random
-	}
-	return ""
-}
-
-func (m *AAA_RegRequest) GetEmail() string {
+func (m *AAAGenerateTokenCall) GetEmail() string {
 	if m != nil {
 		return m.Email
 	}
 	return ""
 }
 
-type AAA_APIKeypair struct {
+func (m *AAAGenerateTokenCall) GetPhone() string {
+	if m != nil {
+		return m.Phone
+	}
+	return ""
+}
+
+type AAAGenerateTokenBack struct {
 	Id  string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	Key string `protobuf:"bytes,2,opt,name=key" json:"key,omitempty"`
 }
 
-func (m *AAA_APIKeypair) Reset()                    { *m = AAA_APIKeypair{} }
-func (m *AAA_APIKeypair) String() string            { return proto.CompactTextString(m) }
-func (*AAA_APIKeypair) ProtoMessage()               {}
-func (*AAA_APIKeypair) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+func (m *AAAGenerateTokenBack) Reset()                    { *m = AAAGenerateTokenBack{} }
+func (m *AAAGenerateTokenBack) String() string            { return proto.CompactTextString(m) }
+func (*AAAGenerateTokenBack) ProtoMessage()               {}
+func (*AAAGenerateTokenBack) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
 
-func (m *AAA_APIKeypair) GetId() string {
+func (m *AAAGenerateTokenBack) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-func (m *AAA_APIKeypair) GetKey() string {
+func (m *AAAGenerateTokenBack) GetKey() string {
 	if m != nil {
 		return m.Key
 	}
 	return ""
 }
 
-type AAA_APIToken struct {
+type AAATokenCall struct {
 	Id        string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	Signature string `protobuf:"bytes,2,opt,name=signature" json:"signature,omitempty"`
 }
 
-func (m *AAA_APIToken) Reset()                    { *m = AAA_APIToken{} }
-func (m *AAA_APIToken) String() string            { return proto.CompactTextString(m) }
-func (*AAA_APIToken) ProtoMessage()               {}
-func (*AAA_APIToken) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
+func (m *AAATokenCall) Reset()                    { *m = AAATokenCall{} }
+func (m *AAATokenCall) String() string            { return proto.CompactTextString(m) }
+func (*AAATokenCall) ProtoMessage()               {}
+func (*AAATokenCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
 
-func (m *AAA_APIToken) GetId() string {
+func (m *AAATokenCall) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-func (m *AAA_APIToken) GetSignature() string {
+func (m *AAATokenCall) GetSignature() string {
 	if m != nil {
 		return m.Signature
 	}
 	return ""
 }
 
-type AAA_ThirdpartyKey struct {
-	Apitoken *AAA_APIToken `protobuf:"bytes,1,opt,name=apitoken" json:"apitoken,omitempty"`
-	Apitype  string        `protobuf:"bytes,2,opt,name=apitype" json:"apitype,omitempty"`
-	Name     string        `protobuf:"bytes,3,opt,name=name" json:"name,omitempty"`
-	Id       string        `protobuf:"bytes,4,opt,name=id" json:"id,omitempty"`
-	Key      string        `protobuf:"bytes,5,opt,name=key" json:"key,omitempty"`
+type AAATokenBack struct {
+	Valid bool `protobuf:"varint,1,opt,name=Valid" json:"Valid,omitempty"`
 }
 
-func (m *AAA_ThirdpartyKey) Reset()                    { *m = AAA_ThirdpartyKey{} }
-func (m *AAA_ThirdpartyKey) String() string            { return proto.CompactTextString(m) }
-func (*AAA_ThirdpartyKey) ProtoMessage()               {}
-func (*AAA_ThirdpartyKey) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
+func (m *AAATokenBack) Reset()                    { *m = AAATokenBack{} }
+func (m *AAATokenBack) String() string            { return proto.CompactTextString(m) }
+func (*AAATokenBack) ProtoMessage()               {}
+func (*AAATokenBack) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
 
-func (m *AAA_ThirdpartyKey) GetApitoken() *AAA_APIToken {
+func (m *AAATokenBack) GetValid() bool {
 	if m != nil {
-		return m.Apitoken
+		return m.Valid
 	}
-	return nil
-}
-
-func (m *AAA_ThirdpartyKey) GetApitype() string {
-	if m != nil {
-		return m.Apitype
-	}
-	return ""
-}
-
-func (m *AAA_ThirdpartyKey) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *AAA_ThirdpartyKey) GetId() string {
-	if m != nil {
-		return m.Id
-	}
-	return ""
-}
-
-func (m *AAA_ThirdpartyKey) GetKey() string {
-	if m != nil {
-		return m.Key
-	}
-	return ""
+	return false
 }
 
 func init() {
-	proto.RegisterType((*ResponseMsg)(nil), "pb.ResponseMsg")
-	proto.RegisterType((*AAA_RegRequest)(nil), "pb.AAA_RegRequest")
-	proto.RegisterType((*AAA_APIKeypair)(nil), "pb.AAA_APIKeypair")
-	proto.RegisterType((*AAA_APIToken)(nil), "pb.AAA_APIToken")
-	proto.RegisterType((*AAA_ThirdpartyKey)(nil), "pb.AAA_ThirdpartyKey")
+	proto.RegisterType((*AAAGenerateTokenCall)(nil), "pb.AAAGenerateTokenCall")
+	proto.RegisterType((*AAAGenerateTokenBack)(nil), "pb.AAAGenerateTokenBack")
+	proto.RegisterType((*AAATokenCall)(nil), "pb.AAATokenCall")
+	proto.RegisterType((*AAATokenBack)(nil), "pb.AAATokenBack")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -178,194 +121,128 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for AAA_Open service
+// Client API for AAAPublicService service
 
-type AAA_OpenClient interface {
-	AAA_RegUser(ctx context.Context, in *AAA_RegRequest, opts ...grpc.CallOption) (*AAA_APIKeypair, error)
+type AAAPublicServiceClient interface {
+	GenerateTokenRPC(ctx context.Context, in *AAAGenerateTokenCall, opts ...grpc.CallOption) (*AAAGenerateTokenBack, error)
 }
 
-type aAA_OpenClient struct {
+type aAAPublicServiceClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewAAA_OpenClient(cc *grpc.ClientConn) AAA_OpenClient {
-	return &aAA_OpenClient{cc}
+func NewAAAPublicServiceClient(cc *grpc.ClientConn) AAAPublicServiceClient {
+	return &aAAPublicServiceClient{cc}
 }
 
-func (c *aAA_OpenClient) AAA_RegUser(ctx context.Context, in *AAA_RegRequest, opts ...grpc.CallOption) (*AAA_APIKeypair, error) {
-	out := new(AAA_APIKeypair)
-	err := grpc.Invoke(ctx, "/pb.AAA_Open/AAA_RegUser", in, out, c.cc, opts...)
+func (c *aAAPublicServiceClient) GenerateTokenRPC(ctx context.Context, in *AAAGenerateTokenCall, opts ...grpc.CallOption) (*AAAGenerateTokenBack, error) {
+	out := new(AAAGenerateTokenBack)
+	err := grpc.Invoke(ctx, "/pb.AAAPublicService/GenerateTokenRPC", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// Server API for AAA_Open service
+// Server API for AAAPublicService service
 
-type AAA_OpenServer interface {
-	AAA_RegUser(context.Context, *AAA_RegRequest) (*AAA_APIKeypair, error)
+type AAAPublicServiceServer interface {
+	GenerateTokenRPC(context.Context, *AAAGenerateTokenCall) (*AAAGenerateTokenBack, error)
 }
 
-func RegisterAAA_OpenServer(s *grpc.Server, srv AAA_OpenServer) {
-	s.RegisterService(&_AAA_Open_serviceDesc, srv)
+func RegisterAAAPublicServiceServer(s *grpc.Server, srv AAAPublicServiceServer) {
+	s.RegisterService(&_AAAPublicService_serviceDesc, srv)
 }
 
-func _AAA_Open_AAA_RegUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AAA_RegRequest)
+func _AAAPublicService_GenerateTokenRPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AAAGenerateTokenCall)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AAA_OpenServer).AAA_RegUser(ctx, in)
+		return srv.(AAAPublicServiceServer).GenerateTokenRPC(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.AAA_Open/AAA_RegUser",
+		FullMethod: "/pb.AAAPublicService/GenerateTokenRPC",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AAA_OpenServer).AAA_RegUser(ctx, req.(*AAA_RegRequest))
+		return srv.(AAAPublicServiceServer).GenerateTokenRPC(ctx, req.(*AAAGenerateTokenCall))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _AAA_Open_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "pb.AAA_Open",
-	HandlerType: (*AAA_OpenServer)(nil),
+var _AAAPublicService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "pb.AAAPublicService",
+	HandlerType: (*AAAPublicServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AAA_RegUser",
-			Handler:    _AAA_Open_AAA_RegUser_Handler,
+			MethodName: "GenerateTokenRPC",
+			Handler:    _AAAPublicService_GenerateTokenRPC_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "He.proto",
 }
 
-// Client API for AAA_Secret service
+// Client API for AAAPrivateService service
 
-type AAA_SecretClient interface {
-	AAA_Auth(ctx context.Context, in *AAA_APIToken, opts ...grpc.CallOption) (*ResponseMsg, error)
-	AAA_ThirdKeypair(ctx context.Context, in *AAA_ThirdpartyKey, opts ...grpc.CallOption) (*ResponseMsg, error)
-	AAA_GetThirdKey(ctx context.Context, in *AAA_ThirdpartyKey, opts ...grpc.CallOption) (*AAA_APIKeypair, error)
+type AAAPrivateServiceClient interface {
+	AuthenticationRPC(ctx context.Context, in *AAATokenCall, opts ...grpc.CallOption) (*AAATokenBack, error)
 }
 
-type aAA_SecretClient struct {
+type aAAPrivateServiceClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewAAA_SecretClient(cc *grpc.ClientConn) AAA_SecretClient {
-	return &aAA_SecretClient{cc}
+func NewAAAPrivateServiceClient(cc *grpc.ClientConn) AAAPrivateServiceClient {
+	return &aAAPrivateServiceClient{cc}
 }
 
-func (c *aAA_SecretClient) AAA_Auth(ctx context.Context, in *AAA_APIToken, opts ...grpc.CallOption) (*ResponseMsg, error) {
-	out := new(ResponseMsg)
-	err := grpc.Invoke(ctx, "/pb.AAA_Secret/AAA_Auth", in, out, c.cc, opts...)
+func (c *aAAPrivateServiceClient) AuthenticationRPC(ctx context.Context, in *AAATokenCall, opts ...grpc.CallOption) (*AAATokenBack, error) {
+	out := new(AAATokenBack)
+	err := grpc.Invoke(ctx, "/pb.AAAPrivateService/AuthenticationRPC", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *aAA_SecretClient) AAA_ThirdKeypair(ctx context.Context, in *AAA_ThirdpartyKey, opts ...grpc.CallOption) (*ResponseMsg, error) {
-	out := new(ResponseMsg)
-	err := grpc.Invoke(ctx, "/pb.AAA_Secret/AAA_ThirdKeypair", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+// Server API for AAAPrivateService service
+
+type AAAPrivateServiceServer interface {
+	AuthenticationRPC(context.Context, *AAATokenCall) (*AAATokenBack, error)
 }
 
-func (c *aAA_SecretClient) AAA_GetThirdKey(ctx context.Context, in *AAA_ThirdpartyKey, opts ...grpc.CallOption) (*AAA_APIKeypair, error) {
-	out := new(AAA_APIKeypair)
-	err := grpc.Invoke(ctx, "/pb.AAA_Secret/AAA_GetThirdKey", in, out, c.cc, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
+func RegisterAAAPrivateServiceServer(s *grpc.Server, srv AAAPrivateServiceServer) {
+	s.RegisterService(&_AAAPrivateService_serviceDesc, srv)
 }
 
-// Server API for AAA_Secret service
-
-type AAA_SecretServer interface {
-	AAA_Auth(context.Context, *AAA_APIToken) (*ResponseMsg, error)
-	AAA_ThirdKeypair(context.Context, *AAA_ThirdpartyKey) (*ResponseMsg, error)
-	AAA_GetThirdKey(context.Context, *AAA_ThirdpartyKey) (*AAA_APIKeypair, error)
-}
-
-func RegisterAAA_SecretServer(s *grpc.Server, srv AAA_SecretServer) {
-	s.RegisterService(&_AAA_Secret_serviceDesc, srv)
-}
-
-func _AAA_Secret_AAA_Auth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AAA_APIToken)
+func _AAAPrivateService_AuthenticationRPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AAATokenCall)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AAA_SecretServer).AAA_Auth(ctx, in)
+		return srv.(AAAPrivateServiceServer).AuthenticationRPC(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.AAA_Secret/AAA_Auth",
+		FullMethod: "/pb.AAAPrivateService/AuthenticationRPC",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AAA_SecretServer).AAA_Auth(ctx, req.(*AAA_APIToken))
+		return srv.(AAAPrivateServiceServer).AuthenticationRPC(ctx, req.(*AAATokenCall))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AAA_Secret_AAA_ThirdKeypair_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AAA_ThirdpartyKey)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AAA_SecretServer).AAA_ThirdKeypair(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/pb.AAA_Secret/AAA_ThirdKeypair",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AAA_SecretServer).AAA_ThirdKeypair(ctx, req.(*AAA_ThirdpartyKey))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AAA_Secret_AAA_GetThirdKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AAA_ThirdpartyKey)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AAA_SecretServer).AAA_GetThirdKey(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/pb.AAA_Secret/AAA_GetThirdKey",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AAA_SecretServer).AAA_GetThirdKey(ctx, req.(*AAA_ThirdpartyKey))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-var _AAA_Secret_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "pb.AAA_Secret",
-	HandlerType: (*AAA_SecretServer)(nil),
+var _AAAPrivateService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "pb.AAAPrivateService",
+	HandlerType: (*AAAPrivateServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "AAA_Auth",
-			Handler:    _AAA_Secret_AAA_Auth_Handler,
-		},
-		{
-			MethodName: "AAA_ThirdKeypair",
-			Handler:    _AAA_Secret_AAA_ThirdKeypair_Handler,
-		},
-		{
-			MethodName: "AAA_GetThirdKey",
-			Handler:    _AAA_Secret_AAA_GetThirdKey_Handler,
+			MethodName: "AuthenticationRPC",
+			Handler:    _AAAPrivateService_AuthenticationRPC_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -375,28 +252,21 @@ var _AAA_Secret_serviceDesc = grpc.ServiceDesc{
 func init() { proto.RegisterFile("He.proto", fileDescriptor1) }
 
 var fileDescriptor1 = []byte{
-	// 360 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x74, 0x92, 0x4f, 0x4f, 0xf2, 0x40,
-	0x10, 0xc6, 0x69, 0xf9, 0xf3, 0xc2, 0xf0, 0x06, 0x78, 0x27, 0xaf, 0xa6, 0x21, 0x1e, 0x48, 0x4f,
-	0x1c, 0x0c, 0x26, 0xe5, 0xe0, 0x85, 0x90, 0x34, 0x1e, 0xd4, 0x10, 0xa3, 0xa9, 0x78, 0x36, 0x85,
-	0x4e, 0x4a, 0x83, 0x6d, 0xd7, 0xdd, 0xe5, 0xd0, 0x8f, 0xe1, 0xe7, 0xf1, 0xcb, 0x99, 0x2d, 0xbb,
-	0x80, 0x82, 0xb7, 0x99, 0xc9, 0xfe, 0x9e, 0x99, 0x79, 0x66, 0xa1, 0x79, 0x47, 0x23, 0xc6, 0x73,
-	0x99, 0xa3, 0xcd, 0x16, 0xee, 0x18, 0xda, 0x01, 0x09, 0x96, 0x67, 0x82, 0x1e, 0x44, 0x8c, 0x08,
-	0xb5, 0x65, 0x1e, 0x91, 0x63, 0x0d, 0xac, 0x61, 0x3d, 0x28, 0x63, 0xec, 0x41, 0x35, 0x15, 0xb1,
-	0x63, 0x0f, 0xac, 0x61, 0x2b, 0x50, 0xa1, 0x3b, 0x85, 0x8e, 0xef, 0xfb, 0xaf, 0x01, 0xc5, 0x01,
-	0xbd, 0x6f, 0x48, 0x48, 0x3c, 0x87, 0x06, 0x0f, 0xb3, 0x28, 0x4f, 0x4b, 0xb2, 0x15, 0xe8, 0x0c,
-	0xff, 0x43, 0x9d, 0xd2, 0x30, 0x79, 0xd3, 0xf4, 0x36, 0x71, 0xbd, 0x2d, 0xef, 0x3f, 0xdd, 0xcf,
-	0xa8, 0x60, 0x61, 0xc2, 0xb1, 0x03, 0x76, 0x12, 0x69, 0xd6, 0x4e, 0x22, 0xd5, 0x73, 0x4d, 0x85,
-	0xe9, 0xb9, 0xa6, 0xc2, 0x9d, 0xc0, 0x5f, 0xcd, 0xcc, 0xf3, 0x35, 0x65, 0x47, 0xc4, 0x05, 0xb4,
-	0x44, 0x12, 0x67, 0xa1, 0xdc, 0x70, 0xd2, 0xdc, 0xbe, 0xe0, 0x7e, 0x58, 0xf0, 0x4f, 0xe1, 0xf3,
-	0x55, 0xc2, 0x23, 0x16, 0x72, 0x59, 0xcc, 0xa8, 0xc0, 0x4b, 0x68, 0x86, 0x2c, 0x91, 0x4a, 0xaf,
-	0x54, 0x6a, 0x7b, 0xbd, 0x11, 0x5b, 0x8c, 0x0e, 0xfb, 0x04, 0xbb, 0x17, 0xe8, 0xc0, 0x1f, 0x15,
-	0x17, 0xcc, 0xe8, 0x9b, 0x54, 0xb9, 0x96, 0x85, 0x29, 0x39, 0xd5, 0xb2, 0x5c, 0xc6, 0x7a, 0xbe,
-	0xda, 0xcf, 0x8d, 0xea, 0xbb, 0x8d, 0xbc, 0x1b, 0x68, 0xaa, 0x4e, 0x8f, 0x8c, 0x32, 0xbc, 0x86,
-	0xb6, 0x76, 0xf4, 0x45, 0x10, 0x47, 0x34, 0x63, 0xec, 0x2d, 0xee, 0xe3, 0xc1, 0x68, 0xda, 0x36,
-	0xb7, 0xe2, 0x7d, 0x5a, 0x00, 0xaa, 0xf8, 0x4c, 0x4b, 0x4e, 0x12, 0xaf, 0xb6, 0x9a, 0xfe, 0x46,
-	0xae, 0xf0, 0x68, 0x97, 0x7e, 0x57, 0x55, 0x0e, 0xce, 0xed, 0x56, 0x70, 0x02, 0xbd, 0x9d, 0x2f,
-	0xe6, 0x18, 0x67, 0x06, 0xfc, 0xe6, 0xd6, 0x29, 0x7a, 0x0a, 0x5d, 0xf5, 0xee, 0x96, 0xa4, 0x11,
-	0xf8, 0x0d, 0x3e, 0x39, 0xfd, 0xa2, 0x51, 0x7e, 0xc4, 0xf1, 0x57, 0x00, 0x00, 0x00, 0xff, 0xff,
-	0x1c, 0x08, 0x0b, 0x9b, 0x94, 0x02, 0x00, 0x00,
+	// 255 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x91, 0x3f, 0x4b, 0x03, 0x41,
+	0x10, 0xc5, 0xcd, 0x49, 0x24, 0x19, 0x44, 0x2e, 0xcb, 0x15, 0x87, 0x58, 0xc8, 0x62, 0x61, 0x75,
+	0x45, 0x6c, 0x14, 0x6c, 0x26, 0x29, 0x4c, 0x25, 0xe1, 0x14, 0x2b, 0x9b, 0xbd, 0xcb, 0x60, 0x86,
+	0x5b, 0x77, 0x8f, 0x75, 0x2f, 0xe0, 0xb7, 0x97, 0xfb, 0x13, 0x96, 0x98, 0x74, 0xfb, 0xde, 0xf2,
+	0x7e, 0x6f, 0x98, 0x81, 0xc9, 0x8a, 0xb2, 0xda, 0x59, 0x6f, 0x45, 0x54, 0x17, 0x72, 0x01, 0x09,
+	0x22, 0xbe, 0x90, 0x21, 0xa7, 0x3c, 0xbd, 0xdb, 0x8a, 0xcc, 0x52, 0x69, 0x2d, 0x12, 0x18, 0xd3,
+	0xb7, 0x62, 0x9d, 0x8e, 0x6e, 0x47, 0xf7, 0xd3, 0xbc, 0x17, 0xad, 0x5b, 0x6f, 0xad, 0xa1, 0x34,
+	0xea, 0xdd, 0x4e, 0xc8, 0xc7, 0x63, 0xc6, 0x42, 0x95, 0x95, 0xb8, 0x82, 0x88, 0x37, 0x03, 0x20,
+	0xe2, 0x8d, 0x88, 0xe1, 0xbc, 0xa2, 0xdf, 0x21, 0xdb, 0x3e, 0xe5, 0x33, 0x5c, 0x22, 0x62, 0x68,
+	0xfd, 0x9f, 0xb8, 0x81, 0xe9, 0x0f, 0x7f, 0x19, 0xe5, 0x1b, 0xb7, 0xef, 0x0c, 0x86, 0xbc, 0x0b,
+	0xe9, 0xae, 0x2f, 0x81, 0xf1, 0x87, 0xd2, 0x03, 0x60, 0x92, 0xf7, 0x62, 0xfe, 0x09, 0x31, 0x22,
+	0xae, 0x9b, 0x42, 0x73, 0xf9, 0x46, 0x6e, 0xc7, 0x25, 0x89, 0x15, 0xc4, 0x07, 0xe3, 0xe6, 0xeb,
+	0xa5, 0x48, 0xb3, 0xba, 0xc8, 0x4e, 0xed, 0xe2, 0xfa, 0xe4, 0x4f, 0xdb, 0x28, 0xcf, 0xe6, 0xaf,
+	0x30, 0x6b, 0xe9, 0x8e, 0x77, 0xca, 0xd3, 0x1e, 0xff, 0x04, 0x33, 0x6c, 0xfc, 0x96, 0x8c, 0xe7,
+	0x52, 0x79, 0xb6, 0x1d, 0x3f, 0x1e, 0x28, 0x81, 0x7b, 0xe0, 0xf4, 0xbc, 0xe2, 0xa2, 0x3b, 0xcd,
+	0xc3, 0x5f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xcc, 0xb1, 0x24, 0x00, 0xa6, 0x01, 0x00, 0x00,
 }
