@@ -10,16 +10,19 @@ syntax = "proto3";
 
 package pb;
 
-message Asset_Req {
+message AssetTemplateCall {
   string id = 1;
   string name = 2;
   map<string,string> param = 3;
 }
 
-message Asset_Res {
-  int32 code = 1;
+message AssetCloudCall {
+  string id = 1;
+  string cloud = 2;
+  bytes data = 3;
 }
 
-service Aseet {
-  rpc Asset_template(Asset_Req) returns (Asset_Res) {};
+service Asset {
+  rpc AddTemplateRPC(AssetTemplateCall) returns (GeneralMsgBack) {};
+  rpc AddAssetRPC(AssetCloudCall) returns (GeneralMsgBack) {};
 }

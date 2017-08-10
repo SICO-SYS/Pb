@@ -1,0 +1,20 @@
+/*
+
+LICENSE:  MIT
+Author:   sine
+Email:    sinerwr@gmail.com
+
+*/
+
+syntax = "proto3";
+
+package pb;
+
+message GeneralMsgCall {
+  int64 code = 1;
+}
+
+message GeneralMsgBack {
+  int64 code = 1;
+  string msg = 2;
+}

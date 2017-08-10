@@ -10,43 +10,31 @@ syntax = "proto3";
 
 package pb;
 
-message ResponseMsg {
-  int32 code = 1;
-  string msg = 2;
+message AAAGenerateTokenCall {
+  string email = 1;
+  string phone = 2;
 }
 
-message AAA_RegRequest {
-  string random = 1;
-  string email = 2;
-}
-
-message AAA_APIKeypair {
+message AAAGenerateTokenBack {
   string id = 1;
   string key = 2;
 }
 
-message AAA_APIToken {
+message AAATokenCall {
   string id = 1;
   string signature = 2;
 }
 
-message AAA_ThirdpartyKey {
-  AAA_APIToken apitoken = 1;
-  string apitype = 2;
-  string name = 3;
-  string id = 4;
-  string key = 5;
+message AAATokenBack {
+  bool Valid = 1;
 }
 
-service AAA_Open {
-  rpc AAA_RegUser(AAA_RegRequest) returns (AAA_APIKeypair){}
+service AAAPublicService {
+  rpc GenerateTokenRPC(AAAGenerateTokenCall) returns (AAAGenerateTokenBack){}
 }
 
-service AAA_Secret {
-  rpc AAA_Auth(AAA_APIToken) returns (ResponseMsg){}
-  rpc AAA_ThirdKeypair(AAA_ThirdpartyKey) returns (ResponseMsg){}
-  rpc AAA_GetThirdKey(AAA_ThirdpartyKey) returns (AAA_APIKeypair){}
-//  rpc AAA_ApplyAuth(AAA_APIKeypair) returns (ResponseMsg){}
-//  rpc AAA_AgreeAuth(AAA_APIKeypair) returns (ResponseMsg){}
-//  rpc AAA_Policy(AAA_APIKeypair) returns (ResponseMsg){}
+service AAAPrivateService {
+  rpc AuthenticationRPC(AAATokenCall) returns (AAATokenBack){}
+//  rpc AuthorizationRPC(AAATokenCall) returns (AAATokenBack){}
+//  rpc AccountingRPC(AAATokenCall) returns (AAATokenBack){}
 }
