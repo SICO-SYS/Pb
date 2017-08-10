@@ -21,6 +21,8 @@ It has these top-level messages:
 	AAATokenBack
 	CloudAPICall
 	CloudAPIBack
+	CloudTokenCall
+	CloudTokenBack
 	GeneralMsgCall
 	GeneralMsgBack
 */

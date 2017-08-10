@@ -26,6 +26,23 @@ message CloudAPIBack {
   bytes data = 3;
 }
 
-service CloudService {
+message CloudTokenCall {
+ string cloud = 1;
+ string name = 2;
+ string id = 3;
+ string key = 4;
+}
+
+message CloudTokenBack {
+  string id = 1;
+  string key = 2;
+}
+
+service CloudAPIService {
   rpc qcloudRPC(CloudAPICall) returns (CloudAPIBack) {}
 }
+
+service CloudTokenService {
+  rpc tokenSet(CloudTokenCall) returns (CloudTokenBack) {}
+  rpc tokenGet(CloudTokenCall) returns (CloudTokenBack) {}
+} 
