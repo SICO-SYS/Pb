@@ -11,7 +11,7 @@ syntax = "proto3";
 package pb;
 
 message CloudAPICall {
-  string bsns = 1;
+  string service = 1;
   string action = 2;
   string region = 3;
   string cloudId = 4;
@@ -27,10 +27,11 @@ message CloudAPIBack {
 }
 
 message CloudTokenCall {
- string cloud = 1;
- string name = 2;
- string id = 3;
- string key = 4;
+  string cloud = 1;
+  string name = 2;
+  string id = 3;
+  string key = 4;
+  string AAATokenID = 5; 
 }
 
 message CloudTokenBack {
