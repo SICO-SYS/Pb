@@ -27,7 +27,7 @@ message AssetMsgBack {
   string msg = 2;
 }
 
-service Asset {
+service AssetService {
   rpc CreateTemplateRPC(AssetTemplateCall) returns (AssetMsgBack) {};
   rpc AddAssetRPC(AssetCloudCall) returns (AssetMsgBack) {};
 }
