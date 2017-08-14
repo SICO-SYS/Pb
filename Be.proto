@@ -28,6 +28,6 @@ message AssetMsgBack {
 }
 
 service Asset {
-  rpc AddTemplateRPC(AssetTemplateCall) returns (AssetMsgBack) {};
+  rpc CreateTemplateRPC(AssetTemplateCall) returns (AssetMsgBack) {};
   rpc AddAssetRPC(AssetCloudCall) returns (AssetMsgBack) {};
 }
