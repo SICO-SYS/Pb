@@ -16,7 +16,7 @@ message CloudAPICall {
   string region = 3;
   string cloudId = 4;
   string cloudKey = 5;
-  string id = 6;
+  string cloud = 6;
   map<string,string> params = 7;
 }
 
@@ -40,7 +40,7 @@ message CloudTokenBack {
 }
 
 service CloudAPIService {
-  rpc qcloudRPC(CloudAPICall) returns (CloudAPIBack) {}
+  rpc RequestRPC(CloudAPICall) returns (CloudAPIBack) {}
 }
 
 service CloudTokenService {
