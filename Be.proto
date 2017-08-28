@@ -35,10 +35,10 @@ message AssetMsgBack {
 }
 
 service AssetService {
-  rpc SynchronizeAssetRPC(AssetSynchronizeCall) returns (AssetMsgBack) {};
-  rpc CustomAssetRPC(AssetCustomCall) returns (AssetMsgBack) {};
+  rpc SynchronizeRPC(AssetSynchronizeCall) returns (AssetMsgBack) {};
+  rpc CustomRPC(AssetCustomCall) returns (AssetMsgBack) {};
 }
 
 service TemplateService {
-  rpc CreateTemplateRPC(AssetTemplateCall) returns (AssetMsgBack) {};  
+  rpc CreateRPC(AssetTemplateCall) returns (AssetMsgBack) {};  
 }
