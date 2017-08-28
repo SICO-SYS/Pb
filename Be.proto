@@ -16,10 +16,17 @@ message AssetTemplateCall {
   map<string,string> param = 3;
 }
 
-message AssetCloudCall {
+message AssetSynchronizeCall {
   string id = 1;
   string cloud = 2;
-  bytes data = 3;
+  string service = 3;
+  bytes data = 4;
+}
+
+message AssetCustomCall {
+  string id = 1;
+  string cloud = 2;
+  map<string,string> param = 3;
 }
 
 message AssetMsgBack {
@@ -28,6 +35,10 @@ message AssetMsgBack {
 }
 
 service AssetService {
-  rpc CreateTemplateRPC(AssetTemplateCall) returns (AssetMsgBack) {};
-  rpc AddAssetRPC(AssetCloudCall) returns (AssetMsgBack) {};
+  rpc SynchronizeAssetRPC(AssetSynchronizeCall) returns (AssetMsgBack) {};
+  rpc CustomAssetRPC(AssetCustomCall) returns (AssetMsgBack) {};
+}
+
+service TemplateService {
+  rpc CreateTemplateRPC(AssetTemplateCall) returns (AssetMsgBack) {};  
 }
