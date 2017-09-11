@@ -1,0 +1,36 @@
+/*
+
+LICENSE:  MIT
+Author:   sine
+Email:    sinerwr@gmail.com
+
+*/
+
+syntax = "proto3";
+
+package pb;
+
+message ConfigPushCall {
+  string id = 1;
+  string environment = 2;
+  bytes params = 3;
+}
+
+message ConfigPushBack {
+  int64 code = 1;
+}
+
+message ConfigPullCall {
+  string id = 1;
+  string environment = 2;
+}
+
+message ConfigPullBack {
+  int64 code = 1;
+  bytes params = 3;
+}
+
+service ConfigService {
+  rpc PushRPC(ConfigPushCall) returns (ConfigPushBack) {};
+  rpc PullRPC(ConfigPullCall) returns (ConfigPullBack) {};
+}

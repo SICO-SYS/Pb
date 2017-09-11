@@ -2,31 +2,6 @@
 // source: Be.proto
 // DO NOT EDIT!
 
-/*
-Package pb is a generated protocol buffer package.
-
-It is generated from these files:
-	Be.proto
-	He.proto
-	Li.proto
-	general.proto
-
-It has these top-level messages:
-	AssetTemplateCall
-	AssetSynchronizeCall
-	AssetCustomCall
-	AssetMsgBack
-	AAAGenerateTokenCall
-	AAAGenerateTokenBack
-	AAATokenCall
-	AAATokenBack
-	CloudAPICall
-	CloudAPIBack
-	CloudTokenCall
-	CloudTokenBack
-	GeneralMsgCall
-	GeneralMsgBack
-*/
 package pb
 
 import proto "github.com/golang/protobuf/proto"
@@ -43,12 +18,6 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the proto package it is being compiled against.
-// A compilation error at this line likely means your copy of the
-// proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
-
 type AssetTemplateCall struct {
 	Id    string            `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	Name  string            `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
@@ -58,7 +27,7 @@ type AssetTemplateCall struct {
 func (m *AssetTemplateCall) Reset()                    { *m = AssetTemplateCall{} }
 func (m *AssetTemplateCall) String() string            { return proto.CompactTextString(m) }
 func (*AssetTemplateCall) ProtoMessage()               {}
-func (*AssetTemplateCall) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{0} }
+func (*AssetTemplateCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
 func (m *AssetTemplateCall) GetId() string {
 	if m != nil {
@@ -91,7 +60,7 @@ type AssetSynchronizeCall struct {
 func (m *AssetSynchronizeCall) Reset()                    { *m = AssetSynchronizeCall{} }
 func (m *AssetSynchronizeCall) String() string            { return proto.CompactTextString(m) }
 func (*AssetSynchronizeCall) ProtoMessage()               {}
-func (*AssetSynchronizeCall) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{1} }
+func (*AssetSynchronizeCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
 
 func (m *AssetSynchronizeCall) GetId() string {
 	if m != nil {
@@ -130,7 +99,7 @@ type AssetCustomCall struct {
 func (m *AssetCustomCall) Reset()                    { *m = AssetCustomCall{} }
 func (m *AssetCustomCall) String() string            { return proto.CompactTextString(m) }
 func (*AssetCustomCall) ProtoMessage()               {}
-func (*AssetCustomCall) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{2} }
+func (*AssetCustomCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
 
 func (m *AssetCustomCall) GetId() string {
 	if m != nil {
@@ -161,7 +130,7 @@ type AssetMsgBack struct {
 func (m *AssetMsgBack) Reset()                    { *m = AssetMsgBack{} }
 func (m *AssetMsgBack) String() string            { return proto.CompactTextString(m) }
 func (*AssetMsgBack) ProtoMessage()               {}
-func (*AssetMsgBack) Descriptor() ([]byte, []int) { return fileDescriptor0, []int{3} }
+func (*AssetMsgBack) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
 
 func (m *AssetMsgBack) GetCode() int64 {
 	if m != nil {
@@ -353,9 +322,9 @@ var _TemplateService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "Be.proto",
 }
 
-func init() { proto.RegisterFile("Be.proto", fileDescriptor0) }
+func init() { proto.RegisterFile("Be.proto", fileDescriptor1) }
 
-var fileDescriptor0 = []byte{
+var fileDescriptor1 = []byte{
 	// 346 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x52, 0x4d, 0x4f, 0xc2, 0x40,
 	0x10, 0x75, 0x5b, 0x50, 0x19, 0x09, 0xe0, 0x8a, 0xc9, 0x86, 0x83, 0x69, 0x7a, 0xe2, 0xd4, 0x03,

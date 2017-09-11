@@ -31,7 +31,7 @@ type CloudAPICall struct {
 func (m *CloudAPICall) Reset()                    { *m = CloudAPICall{} }
 func (m *CloudAPICall) String() string            { return proto.CompactTextString(m) }
 func (*CloudAPICall) ProtoMessage()               {}
-func (*CloudAPICall) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+func (*CloudAPICall) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
 
 func (m *CloudAPICall) GetService() string {
 	if m != nil {
@@ -91,7 +91,7 @@ type CloudAPIBack struct {
 func (m *CloudAPIBack) Reset()                    { *m = CloudAPIBack{} }
 func (m *CloudAPIBack) String() string            { return proto.CompactTextString(m) }
 func (*CloudAPIBack) ProtoMessage()               {}
-func (*CloudAPIBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (*CloudAPIBack) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{1} }
 
 func (m *CloudAPIBack) GetCode() int32 {
 	if m != nil {
@@ -125,7 +125,7 @@ type CloudTokenCall struct {
 func (m *CloudTokenCall) Reset()                    { *m = CloudTokenCall{} }
 func (m *CloudTokenCall) String() string            { return proto.CompactTextString(m) }
 func (*CloudTokenCall) ProtoMessage()               {}
-func (*CloudTokenCall) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+func (*CloudTokenCall) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{2} }
 
 func (m *CloudTokenCall) GetCloud() string {
 	if m != nil {
@@ -170,7 +170,7 @@ type CloudTokenBack struct {
 func (m *CloudTokenBack) Reset()                    { *m = CloudTokenBack{} }
 func (m *CloudTokenBack) String() string            { return proto.CompactTextString(m) }
 func (*CloudTokenBack) ProtoMessage()               {}
-func (*CloudTokenBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
+func (*CloudTokenBack) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{3} }
 
 func (m *CloudTokenBack) GetId() string {
 	if m != nil {
@@ -362,9 +362,9 @@ var _CloudTokenService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "Li.proto",
 }
 
-func init() { proto.RegisterFile("Li.proto", fileDescriptor2) }
+func init() { proto.RegisterFile("Li.proto", fileDescriptor3) }
 
-var fileDescriptor2 = []byte{
+var fileDescriptor3 = []byte{
 	// 377 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x52, 0xc1, 0x6e, 0xa2, 0x50,
 	0x14, 0x1d, 0x10, 0xd1, 0xb9, 0x1a, 0xc7, 0xb9, 0x99, 0x4c, 0x08, 0x69, 0x1a, 0xc3, 0xca, 0x15,

@@ -26,7 +26,7 @@ type AAAGenerateTokenCall struct {
 func (m *AAAGenerateTokenCall) Reset()                    { *m = AAAGenerateTokenCall{} }
 func (m *AAAGenerateTokenCall) String() string            { return proto.CompactTextString(m) }
 func (*AAAGenerateTokenCall) ProtoMessage()               {}
-func (*AAAGenerateTokenCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (*AAAGenerateTokenCall) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
 func (m *AAAGenerateTokenCall) GetEmail() string {
 	if m != nil {
@@ -50,7 +50,7 @@ type AAAGenerateTokenBack struct {
 func (m *AAAGenerateTokenBack) Reset()                    { *m = AAAGenerateTokenBack{} }
 func (m *AAAGenerateTokenBack) String() string            { return proto.CompactTextString(m) }
 func (*AAAGenerateTokenBack) ProtoMessage()               {}
-func (*AAAGenerateTokenBack) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (*AAAGenerateTokenBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
 
 func (m *AAAGenerateTokenBack) GetId() string {
 	if m != nil {
@@ -74,7 +74,7 @@ type AAATokenCall struct {
 func (m *AAATokenCall) Reset()                    { *m = AAATokenCall{} }
 func (m *AAATokenCall) String() string            { return proto.CompactTextString(m) }
 func (*AAATokenCall) ProtoMessage()               {}
-func (*AAATokenCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+func (*AAATokenCall) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
 
 func (m *AAATokenCall) GetId() string {
 	if m != nil {
@@ -97,7 +97,7 @@ type AAATokenBack struct {
 func (m *AAATokenBack) Reset()                    { *m = AAATokenBack{} }
 func (m *AAATokenBack) String() string            { return proto.CompactTextString(m) }
 func (*AAATokenBack) ProtoMessage()               {}
-func (*AAATokenBack) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
+func (*AAATokenBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
 
 func (m *AAATokenBack) GetValid() bool {
 	if m != nil {
@@ -249,9 +249,9 @@ var _AAAPrivateService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "He.proto",
 }
 
-func init() { proto.RegisterFile("He.proto", fileDescriptor1) }
+func init() { proto.RegisterFile("He.proto", fileDescriptor2) }
 
-var fileDescriptor1 = []byte{
+var fileDescriptor2 = []byte{
 	// 255 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x91, 0x3f, 0x4b, 0x03, 0x41,
 	0x10, 0xc5, 0xcd, 0x49, 0x24, 0x19, 0x44, 0x2e, 0xcb, 0x15, 0x87, 0x58, 0xc8, 0x62, 0x61, 0x75,
