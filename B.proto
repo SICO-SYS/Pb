@@ -27,7 +27,7 @@ message ConfigPullCall {
 
 message ConfigPullBack {
   int64 code = 1;
-  bytes params = 3;
+  bytes params = 2;
 }
 
 service ConfigService {
