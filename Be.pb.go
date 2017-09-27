@@ -19,9 +19,9 @@ var _ = fmt.Errorf
 var _ = math.Inf
 
 type AssetTemplateCall struct {
-	Id    string            `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	Name  string            `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	Param map[string]string `protobuf:"bytes,3,rep,name=param" json:"param,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Id     string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Name   string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Params []byte `protobuf:"bytes,3,opt,name=params,proto3" json:"params,omitempty"`
 }
 
 func (m *AssetTemplateCall) Reset()                    { *m = AssetTemplateCall{} }
@@ -43,11 +43,75 @@ func (m *AssetTemplateCall) GetName() string {
 	return ""
 }
 
-func (m *AssetTemplateCall) GetParam() map[string]string {
+func (m *AssetTemplateCall) GetParams() []byte {
 	if m != nil {
-		return m.Param
+		return m.Params
 	}
 	return nil
+}
+
+type AssetTemplateBack struct {
+	Code int64 `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
+}
+
+func (m *AssetTemplateBack) Reset()                    { *m = AssetTemplateBack{} }
+func (m *AssetTemplateBack) String() string            { return proto.CompactTextString(m) }
+func (*AssetTemplateBack) ProtoMessage()               {}
+func (*AssetTemplateBack) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+
+func (m *AssetTemplateBack) GetCode() int64 {
+	if m != nil {
+		return m.Code
+	}
+	return 0
+}
+
+type AssetCustomizeCall struct {
+	Id     string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Cloud  string `protobuf:"bytes,2,opt,name=cloud" json:"cloud,omitempty"`
+	Params []byte `protobuf:"bytes,3,opt,name=params,proto3" json:"params,omitempty"`
+}
+
+func (m *AssetCustomizeCall) Reset()                    { *m = AssetCustomizeCall{} }
+func (m *AssetCustomizeCall) String() string            { return proto.CompactTextString(m) }
+func (*AssetCustomizeCall) ProtoMessage()               {}
+func (*AssetCustomizeCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+
+func (m *AssetCustomizeCall) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *AssetCustomizeCall) GetCloud() string {
+	if m != nil {
+		return m.Cloud
+	}
+	return ""
+}
+
+func (m *AssetCustomizeCall) GetParams() []byte {
+	if m != nil {
+		return m.Params
+	}
+	return nil
+}
+
+type AssetCustomizeBack struct {
+	Code int64 `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
+}
+
+func (m *AssetCustomizeBack) Reset()                    { *m = AssetCustomizeBack{} }
+func (m *AssetCustomizeBack) String() string            { return proto.CompactTextString(m) }
+func (*AssetCustomizeBack) ProtoMessage()               {}
+func (*AssetCustomizeBack) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
+
+func (m *AssetCustomizeBack) GetCode() int64 {
+	if m != nil {
+		return m.Code
+	}
+	return 0
 }
 
 type AssetSynchronizeCall struct {
@@ -60,7 +124,7 @@ type AssetSynchronizeCall struct {
 func (m *AssetSynchronizeCall) Reset()                    { *m = AssetSynchronizeCall{} }
 func (m *AssetSynchronizeCall) String() string            { return proto.CompactTextString(m) }
 func (*AssetSynchronizeCall) ProtoMessage()               {}
-func (*AssetSynchronizeCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (*AssetSynchronizeCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{4} }
 
 func (m *AssetSynchronizeCall) GetId() string {
 	if m != nil {
@@ -90,67 +154,45 @@ func (m *AssetSynchronizeCall) GetData() []byte {
 	return nil
 }
 
-type AssetCustomCall struct {
-	Id    string            `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	Cloud string            `protobuf:"bytes,2,opt,name=cloud" json:"cloud,omitempty"`
-	Param map[string]string `protobuf:"bytes,3,rep,name=param" json:"param,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+type AssetSynchronizeBack struct {
+	Code       int64  `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
+	NextToken  string `protobuf:"bytes,2,opt,name=nextToken" json:"nextToken,omitempty"`
+	TotalCount int64  `protobuf:"varint,3,opt,name=totalCount" json:"totalCount,omitempty"`
 }
 
-func (m *AssetCustomCall) Reset()                    { *m = AssetCustomCall{} }
-func (m *AssetCustomCall) String() string            { return proto.CompactTextString(m) }
-func (*AssetCustomCall) ProtoMessage()               {}
-func (*AssetCustomCall) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{2} }
+func (m *AssetSynchronizeBack) Reset()                    { *m = AssetSynchronizeBack{} }
+func (m *AssetSynchronizeBack) String() string            { return proto.CompactTextString(m) }
+func (*AssetSynchronizeBack) ProtoMessage()               {}
+func (*AssetSynchronizeBack) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{5} }
 
-func (m *AssetCustomCall) GetId() string {
-	if m != nil {
-		return m.Id
-	}
-	return ""
-}
-
-func (m *AssetCustomCall) GetCloud() string {
-	if m != nil {
-		return m.Cloud
-	}
-	return ""
-}
-
-func (m *AssetCustomCall) GetParam() map[string]string {
-	if m != nil {
-		return m.Param
-	}
-	return nil
-}
-
-type AssetMsgBack struct {
-	Code int64  `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
-	Msg  string `protobuf:"bytes,2,opt,name=msg" json:"msg,omitempty"`
-}
-
-func (m *AssetMsgBack) Reset()                    { *m = AssetMsgBack{} }
-func (m *AssetMsgBack) String() string            { return proto.CompactTextString(m) }
-func (*AssetMsgBack) ProtoMessage()               {}
-func (*AssetMsgBack) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{3} }
-
-func (m *AssetMsgBack) GetCode() int64 {
+func (m *AssetSynchronizeBack) GetCode() int64 {
 	if m != nil {
 		return m.Code
 	}
 	return 0
 }
 
-func (m *AssetMsgBack) GetMsg() string {
+func (m *AssetSynchronizeBack) GetNextToken() string {
 	if m != nil {
-		return m.Msg
+		return m.NextToken
 	}
 	return ""
 }
 
+func (m *AssetSynchronizeBack) GetTotalCount() int64 {
+	if m != nil {
+		return m.TotalCount
+	}
+	return 0
+}
+
 func init() {
 	proto.RegisterType((*AssetTemplateCall)(nil), "pb.AssetTemplateCall")
+	proto.RegisterType((*AssetTemplateBack)(nil), "pb.AssetTemplateBack")
+	proto.RegisterType((*AssetCustomizeCall)(nil), "pb.AssetCustomizeCall")
+	proto.RegisterType((*AssetCustomizeBack)(nil), "pb.AssetCustomizeBack")
 	proto.RegisterType((*AssetSynchronizeCall)(nil), "pb.AssetSynchronizeCall")
-	proto.RegisterType((*AssetCustomCall)(nil), "pb.AssetCustomCall")
-	proto.RegisterType((*AssetMsgBack)(nil), "pb.AssetMsgBack")
+	proto.RegisterType((*AssetSynchronizeBack)(nil), "pb.AssetSynchronizeBack")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -164,8 +206,8 @@ const _ = grpc.SupportPackageIsVersion4
 // Client API for AssetService service
 
 type AssetServiceClient interface {
-	SynchronizeRPC(ctx context.Context, in *AssetSynchronizeCall, opts ...grpc.CallOption) (*AssetMsgBack, error)
-	CustomRPC(ctx context.Context, in *AssetCustomCall, opts ...grpc.CallOption) (*AssetMsgBack, error)
+	SynchronizeRPC(ctx context.Context, in *AssetSynchronizeCall, opts ...grpc.CallOption) (*AssetSynchronizeBack, error)
+	CustomRPC(ctx context.Context, in *AssetCustomizeCall, opts ...grpc.CallOption) (*AssetCustomizeBack, error)
 }
 
 type assetServiceClient struct {
@@ -176,8 +218,8 @@ func NewAssetServiceClient(cc *grpc.ClientConn) AssetServiceClient {
 	return &assetServiceClient{cc}
 }
 
-func (c *assetServiceClient) SynchronizeRPC(ctx context.Context, in *AssetSynchronizeCall, opts ...grpc.CallOption) (*AssetMsgBack, error) {
-	out := new(AssetMsgBack)
+func (c *assetServiceClient) SynchronizeRPC(ctx context.Context, in *AssetSynchronizeCall, opts ...grpc.CallOption) (*AssetSynchronizeBack, error) {
+	out := new(AssetSynchronizeBack)
 	err := grpc.Invoke(ctx, "/pb.AssetService/SynchronizeRPC", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -185,8 +227,8 @@ func (c *assetServiceClient) SynchronizeRPC(ctx context.Context, in *AssetSynchr
 	return out, nil
 }
 
-func (c *assetServiceClient) CustomRPC(ctx context.Context, in *AssetCustomCall, opts ...grpc.CallOption) (*AssetMsgBack, error) {
-	out := new(AssetMsgBack)
+func (c *assetServiceClient) CustomRPC(ctx context.Context, in *AssetCustomizeCall, opts ...grpc.CallOption) (*AssetCustomizeBack, error) {
+	out := new(AssetCustomizeBack)
 	err := grpc.Invoke(ctx, "/pb.AssetService/CustomRPC", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -197,8 +239,8 @@ func (c *assetServiceClient) CustomRPC(ctx context.Context, in *AssetCustomCall,
 // Server API for AssetService service
 
 type AssetServiceServer interface {
-	SynchronizeRPC(context.Context, *AssetSynchronizeCall) (*AssetMsgBack, error)
-	CustomRPC(context.Context, *AssetCustomCall) (*AssetMsgBack, error)
+	SynchronizeRPC(context.Context, *AssetSynchronizeCall) (*AssetSynchronizeBack, error)
+	CustomRPC(context.Context, *AssetCustomizeCall) (*AssetCustomizeBack, error)
 }
 
 func RegisterAssetServiceServer(s *grpc.Server, srv AssetServiceServer) {
@@ -224,7 +266,7 @@ func _AssetService_SynchronizeRPC_Handler(srv interface{}, ctx context.Context, 
 }
 
 func _AssetService_CustomRPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AssetCustomCall)
+	in := new(AssetCustomizeCall)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -236,7 +278,7 @@ func _AssetService_CustomRPC_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/pb.AssetService/CustomRPC",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AssetServiceServer).CustomRPC(ctx, req.(*AssetCustomCall))
+		return srv.(AssetServiceServer).CustomRPC(ctx, req.(*AssetCustomizeCall))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -261,7 +303,7 @@ var _AssetService_serviceDesc = grpc.ServiceDesc{
 // Client API for TemplateService service
 
 type TemplateServiceClient interface {
-	CreateRPC(ctx context.Context, in *AssetTemplateCall, opts ...grpc.CallOption) (*AssetMsgBack, error)
+	CreateRPC(ctx context.Context, in *AssetTemplateCall, opts ...grpc.CallOption) (*AssetTemplateBack, error)
 }
 
 type templateServiceClient struct {
@@ -272,8 +314,8 @@ func NewTemplateServiceClient(cc *grpc.ClientConn) TemplateServiceClient {
 	return &templateServiceClient{cc}
 }
 
-func (c *templateServiceClient) CreateRPC(ctx context.Context, in *AssetTemplateCall, opts ...grpc.CallOption) (*AssetMsgBack, error) {
-	out := new(AssetMsgBack)
+func (c *templateServiceClient) CreateRPC(ctx context.Context, in *AssetTemplateCall, opts ...grpc.CallOption) (*AssetTemplateBack, error) {
+	out := new(AssetTemplateBack)
 	err := grpc.Invoke(ctx, "/pb.TemplateService/CreateRPC", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -284,7 +326,7 @@ func (c *templateServiceClient) CreateRPC(ctx context.Context, in *AssetTemplate
 // Server API for TemplateService service
 
 type TemplateServiceServer interface {
-	CreateRPC(context.Context, *AssetTemplateCall) (*AssetMsgBack, error)
+	CreateRPC(context.Context, *AssetTemplateCall) (*AssetTemplateBack, error)
 }
 
 func RegisterTemplateServiceServer(s *grpc.Server, srv TemplateServiceServer) {
@@ -325,27 +367,26 @@ var _TemplateService_serviceDesc = grpc.ServiceDesc{
 func init() { proto.RegisterFile("Be.proto", fileDescriptor1) }
 
 var fileDescriptor1 = []byte{
-	// 346 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x52, 0x4d, 0x4f, 0xc2, 0x40,
-	0x10, 0x75, 0x5b, 0x50, 0x19, 0x09, 0xe0, 0x8a, 0xc9, 0x86, 0x83, 0x69, 0x7a, 0xe2, 0xd4, 0x03,
-	0x12, 0x42, 0x3c, 0x98, 0x48, 0xe3, 0xc1, 0x83, 0x09, 0x29, 0xfe, 0x81, 0xa5, 0xdd, 0x60, 0xa5,
-	0x5f, 0xe9, 0x2e, 0x24, 0x78, 0xf6, 0xbf, 0x18, 0xff, 0xa5, 0xd9, 0xa1, 0x2d, 0x7e, 0xf4, 0x62,
-	0xe2, 0xed, 0xcd, 0xec, 0xbe, 0xf7, 0x66, 0x5e, 0x06, 0x4e, 0x67, 0xc2, 0xc9, 0xf2, 0x54, 0xa5,
-	0xd4, 0xc8, 0x96, 0xf6, 0x07, 0x81, 0xf3, 0x3b, 0x29, 0x85, 0x7a, 0x12, 0x71, 0x16, 0x71, 0x25,
-	0x5c, 0x1e, 0x45, 0xb4, 0x03, 0x46, 0x18, 0x30, 0x62, 0x91, 0x61, 0xcb, 0x33, 0xc2, 0x80, 0x52,
-	0x68, 0x24, 0x3c, 0x16, 0xcc, 0xc0, 0x0e, 0x62, 0x3a, 0x81, 0x66, 0xc6, 0x73, 0x1e, 0x33, 0xd3,
-	0x32, 0x87, 0x67, 0x23, 0xcb, 0xc9, 0x96, 0xce, 0x2f, 0x25, 0x67, 0xae, 0xbf, 0xdc, 0x27, 0x2a,
-	0xdf, 0x79, 0xfb, 0xef, 0x83, 0x29, 0xc0, 0xa1, 0x49, 0x7b, 0x60, 0xae, 0xc5, 0xae, 0xb0, 0xd2,
-	0x90, 0xf6, 0xa1, 0xb9, 0xe5, 0xd1, 0xa6, 0x34, 0xdb, 0x17, 0x37, 0xc6, 0x94, 0xd8, 0x2f, 0xd0,
-	0x47, 0x83, 0xc5, 0x2e, 0xf1, 0x9f, 0xf3, 0x34, 0x09, 0x5f, 0xeb, 0xa7, 0xed, 0x43, 0xd3, 0x8f,
-	0xd2, 0x4d, 0x50, 0x2a, 0x60, 0x41, 0x19, 0x9c, 0x48, 0x91, 0x6f, 0x43, 0x5f, 0x30, 0x13, 0xfb,
-	0x65, 0xa9, 0xb7, 0x0b, 0xb8, 0xe2, 0xac, 0x61, 0x91, 0x61, 0xdb, 0x43, 0x6c, 0xbf, 0x13, 0xe8,
-	0xa2, 0x99, 0xbb, 0x91, 0x2a, 0x8d, 0xff, 0xe0, 0x33, 0xfe, 0x9e, 0xcb, 0x55, 0x95, 0xcb, 0x41,
-	0xe9, 0x5f, 0x53, 0x19, 0x43, 0x1b, 0xe5, 0x1f, 0xe5, 0x6a, 0xc6, 0xfd, 0xb5, 0xde, 0xc6, 0x4f,
-	0x03, 0x81, 0x64, 0xd3, 0x43, 0xac, 0xf5, 0x62, 0xb9, 0x2a, 0xb8, 0x1a, 0x8e, 0xde, 0x48, 0x41,
-	0x5b, 0x14, 0x21, 0xdc, 0x42, 0xe7, 0x4b, 0xae, 0xde, 0xdc, 0xa5, 0xac, 0x9a, 0xfc, 0x47, 0xe0,
-	0x83, 0x5e, 0xf5, 0x52, 0x98, 0xda, 0x47, 0x74, 0x0c, 0xad, 0xfd, 0x82, 0x9a, 0x7a, 0x51, 0xb3,
-	0x74, 0x1d, 0x6b, 0xf4, 0x00, 0xdd, 0xf2, 0x5c, 0xca, 0x41, 0x26, 0xd0, 0x72, 0x73, 0xc1, 0x15,
-	0xce, 0x70, 0x59, 0x7b, 0x55, 0x75, 0x52, 0xcb, 0x63, 0x3c, 0xea, 0xeb, 0xcf, 0x00, 0x00, 0x00,
-	0xff, 0xff, 0x0f, 0xc6, 0x74, 0x29, 0xe0, 0x02, 0x00, 0x00,
+	// 324 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x92, 0xc1, 0x4e, 0xbb, 0x40,
+	0x10, 0xc6, 0xff, 0xd0, 0xfe, 0xab, 0x4c, 0x9a, 0x1a, 0x37, 0xb5, 0xd9, 0x10, 0x63, 0x1a, 0x2e,
+	0x72, 0xe2, 0x50, 0x8f, 0xc6, 0x83, 0x25, 0xf1, 0xa8, 0x66, 0xed, 0x0b, 0x2c, 0xb0, 0x49, 0xb1,
+	0xb0, 0x4b, 0x60, 0x31, 0xea, 0x7b, 0xf8, 0xbe, 0x86, 0x01, 0x2a, 0xb6, 0x70, 0xf0, 0x36, 0xf3,
+	0x31, 0xf3, 0xfd, 0x3e, 0x60, 0xe0, 0x74, 0x2d, 0xbc, 0x2c, 0x57, 0x5a, 0x11, 0x33, 0x0b, 0x9c,
+	0x27, 0x38, 0xbf, 0x2f, 0x0a, 0xa1, 0x37, 0x22, 0xcd, 0x12, 0xae, 0x85, 0xcf, 0x93, 0x84, 0xcc,
+	0xc0, 0x8c, 0x23, 0x6a, 0x2c, 0x0d, 0xd7, 0x62, 0x66, 0x1c, 0x11, 0x02, 0x63, 0xc9, 0x53, 0x41,
+	0x4d, 0x54, 0xb0, 0x26, 0x0b, 0x98, 0x64, 0x3c, 0xe7, 0x69, 0x41, 0x47, 0x4b, 0xc3, 0x9d, 0xb2,
+	0xa6, 0x73, 0xae, 0x0f, 0x0c, 0xd7, 0x3c, 0xdc, 0x55, 0x06, 0xa1, 0x8a, 0x04, 0x5a, 0x8e, 0x18,
+	0xd6, 0x0e, 0x03, 0x82, 0x83, 0x7e, 0x59, 0x68, 0x95, 0xc6, 0x9f, 0xfd, 0xe8, 0x39, 0xfc, 0x0f,
+	0x13, 0x55, 0x46, 0x0d, 0xbb, 0x6e, 0x06, 0xe1, 0xee, 0xa1, 0xe7, 0x20, 0xfd, 0x15, 0xe6, 0x38,
+	0xf9, 0xf2, 0x21, 0xc3, 0x6d, 0xae, 0xe4, 0xdf, 0xf8, 0x14, 0x4e, 0x0a, 0x91, 0xbf, 0xc5, 0xa1,
+	0xc0, 0x00, 0x16, 0x6b, 0xdb, 0x8a, 0x15, 0x71, 0xcd, 0xe9, 0x18, 0x73, 0x61, 0xed, 0x6c, 0x8f,
+	0x59, 0x43, 0xb9, 0xc8, 0x25, 0x58, 0x52, 0xbc, 0xeb, 0x8d, 0xda, 0x09, 0xd9, 0x30, 0x7f, 0x04,
+	0x72, 0x05, 0xa0, 0x95, 0xe6, 0x89, 0xaf, 0x4a, 0xa9, 0x11, 0x3d, 0x62, 0x1d, 0x65, 0xf5, 0x65,
+	0xc0, 0xb4, 0x46, 0x35, 0x71, 0x1e, 0x60, 0xd6, 0xa1, 0xb2, 0x67, 0x9f, 0x50, 0x2f, 0x0b, 0xbc,
+	0xbe, 0x57, 0xb7, 0x7b, 0x9f, 0x54, 0x41, 0x9d, 0x7f, 0xe4, 0x0e, 0xac, 0xfa, 0x9b, 0x56, 0x16,
+	0x8b, 0xfd, 0xe0, 0xaf, 0x7f, 0x67, 0xf7, 0xe8, 0xf5, 0xfa, 0xea, 0x11, 0xce, 0xda, 0x7b, 0x68,
+	0x93, 0xdd, 0x82, 0xe5, 0xe7, 0x82, 0x6b, 0x0c, 0x75, 0xb1, 0xdf, 0xec, 0xde, 0xa1, 0x7d, 0x2c,
+	0xd7, 0x7e, 0xc1, 0x04, 0x0f, 0xf8, 0xe6, 0x3b, 0x00, 0x00, 0xff, 0xff, 0x86, 0x48, 0x9a, 0x17,
+	0xcc, 0x02, 0x00, 0x00,
 }

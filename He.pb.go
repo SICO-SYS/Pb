@@ -43,14 +43,22 @@ func (m *AAAGenerateTokenCall) GetPhone() string {
 }
 
 type AAAGenerateTokenBack struct {
-	Id  string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	Key string `protobuf:"bytes,2,opt,name=key" json:"key,omitempty"`
+	Code int64  `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
+	Id   string `protobuf:"bytes,2,opt,name=id" json:"id,omitempty"`
+	Key  string `protobuf:"bytes,3,opt,name=key" json:"key,omitempty"`
 }
 
 func (m *AAAGenerateTokenBack) Reset()                    { *m = AAAGenerateTokenBack{} }
 func (m *AAAGenerateTokenBack) String() string            { return proto.CompactTextString(m) }
 func (*AAAGenerateTokenBack) ProtoMessage()               {}
 func (*AAAGenerateTokenBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+
+func (m *AAAGenerateTokenBack) GetCode() int64 {
+	if m != nil {
+		return m.Code
+	}
+	return 0
+}
 
 func (m *AAAGenerateTokenBack) GetId() string {
 	if m != nil {
@@ -91,7 +99,8 @@ func (m *AAATokenCall) GetSignature() string {
 }
 
 type AAATokenBack struct {
-	Valid bool `protobuf:"varint,1,opt,name=Valid" json:"Valid,omitempty"`
+	Code    int64 `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
+	IsValid bool  `protobuf:"varint,2,opt,name=isValid" json:"isValid,omitempty"`
 }
 
 func (m *AAATokenBack) Reset()                    { *m = AAATokenBack{} }
@@ -99,9 +108,112 @@ func (m *AAATokenBack) String() string            { return proto.CompactTextStri
 func (*AAATokenBack) ProtoMessage()               {}
 func (*AAATokenBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
 
-func (m *AAATokenBack) GetValid() bool {
+func (m *AAATokenBack) GetCode() int64 {
 	if m != nil {
-		return m.Valid
+		return m.Code
+	}
+	return 0
+}
+
+func (m *AAATokenBack) GetIsValid() bool {
+	if m != nil {
+		return m.IsValid
+	}
+	return false
+}
+
+type AAAServiceCall struct {
+	Id      string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Service string `protobuf:"bytes,2,opt,name=service" json:"service,omitempty"`
+}
+
+func (m *AAAServiceCall) Reset()                    { *m = AAAServiceCall{} }
+func (m *AAAServiceCall) String() string            { return proto.CompactTextString(m) }
+func (*AAAServiceCall) ProtoMessage()               {}
+func (*AAAServiceCall) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
+
+func (m *AAAServiceCall) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *AAAServiceCall) GetService() string {
+	if m != nil {
+		return m.Service
+	}
+	return ""
+}
+
+type AAAServiceBack struct {
+	Code    int64 `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
+	IsValid bool  `protobuf:"varint,2,opt,name=isValid" json:"isValid,omitempty"`
+}
+
+func (m *AAAServiceBack) Reset()                    { *m = AAAServiceBack{} }
+func (m *AAAServiceBack) String() string            { return proto.CompactTextString(m) }
+func (*AAAServiceBack) ProtoMessage()               {}
+func (*AAAServiceBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{5} }
+
+func (m *AAAServiceBack) GetCode() int64 {
+	if m != nil {
+		return m.Code
+	}
+	return 0
+}
+
+func (m *AAAServiceBack) GetIsValid() bool {
+	if m != nil {
+		return m.IsValid
+	}
+	return false
+}
+
+type AAAEventCall struct {
+	Id     string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Events []byte `protobuf:"bytes,2,opt,name=events,proto3" json:"events,omitempty"`
+}
+
+func (m *AAAEventCall) Reset()                    { *m = AAAEventCall{} }
+func (m *AAAEventCall) String() string            { return proto.CompactTextString(m) }
+func (*AAAEventCall) ProtoMessage()               {}
+func (*AAAEventCall) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{6} }
+
+func (m *AAAEventCall) GetId() string {
+	if m != nil {
+		return m.Id
+	}
+	return ""
+}
+
+func (m *AAAEventCall) GetEvents() []byte {
+	if m != nil {
+		return m.Events
+	}
+	return nil
+}
+
+type AAAEventBack struct {
+	Code     int64 `protobuf:"varint,1,opt,name=code" json:"code,omitempty"`
+	IsRecode bool  `protobuf:"varint,2,opt,name=isRecode" json:"isRecode,omitempty"`
+}
+
+func (m *AAAEventBack) Reset()                    { *m = AAAEventBack{} }
+func (m *AAAEventBack) String() string            { return proto.CompactTextString(m) }
+func (*AAAEventBack) ProtoMessage()               {}
+func (*AAAEventBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{7} }
+
+func (m *AAAEventBack) GetCode() int64 {
+	if m != nil {
+		return m.Code
+	}
+	return 0
+}
+
+func (m *AAAEventBack) GetIsRecode() bool {
+	if m != nil {
+		return m.IsRecode
 	}
 	return false
 }
@@ -111,6 +223,10 @@ func init() {
 	proto.RegisterType((*AAAGenerateTokenBack)(nil), "pb.AAAGenerateTokenBack")
 	proto.RegisterType((*AAATokenCall)(nil), "pb.AAATokenCall")
 	proto.RegisterType((*AAATokenBack)(nil), "pb.AAATokenBack")
+	proto.RegisterType((*AAAServiceCall)(nil), "pb.AAAServiceCall")
+	proto.RegisterType((*AAAServiceBack)(nil), "pb.AAAServiceBack")
+	proto.RegisterType((*AAAEventCall)(nil), "pb.AAAEventCall")
+	proto.RegisterType((*AAAEventBack)(nil), "pb.AAAEventBack")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -189,6 +305,8 @@ var _AAAPublicService_serviceDesc = grpc.ServiceDesc{
 
 type AAAPrivateServiceClient interface {
 	AuthenticationRPC(ctx context.Context, in *AAATokenCall, opts ...grpc.CallOption) (*AAATokenBack, error)
+	AuthorizationRPC(ctx context.Context, in *AAAServiceCall, opts ...grpc.CallOption) (*AAAServiceBack, error)
+	AccountingRPC(ctx context.Context, in *AAAEventCall, opts ...grpc.CallOption) (*AAAEventBack, error)
 }
 
 type aAAPrivateServiceClient struct {
@@ -208,10 +326,30 @@ func (c *aAAPrivateServiceClient) AuthenticationRPC(ctx context.Context, in *AAA
 	return out, nil
 }
 
+func (c *aAAPrivateServiceClient) AuthorizationRPC(ctx context.Context, in *AAAServiceCall, opts ...grpc.CallOption) (*AAAServiceBack, error) {
+	out := new(AAAServiceBack)
+	err := grpc.Invoke(ctx, "/pb.AAAPrivateService/AuthorizationRPC", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *aAAPrivateServiceClient) AccountingRPC(ctx context.Context, in *AAAEventCall, opts ...grpc.CallOption) (*AAAEventBack, error) {
+	out := new(AAAEventBack)
+	err := grpc.Invoke(ctx, "/pb.AAAPrivateService/AccountingRPC", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for AAAPrivateService service
 
 type AAAPrivateServiceServer interface {
 	AuthenticationRPC(context.Context, *AAATokenCall) (*AAATokenBack, error)
+	AuthorizationRPC(context.Context, *AAAServiceCall) (*AAAServiceBack, error)
+	AccountingRPC(context.Context, *AAAEventCall) (*AAAEventBack, error)
 }
 
 func RegisterAAAPrivateServiceServer(s *grpc.Server, srv AAAPrivateServiceServer) {
@@ -236,6 +374,42 @@ func _AAAPrivateService_AuthenticationRPC_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AAAPrivateService_AuthorizationRPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AAAServiceCall)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AAAPrivateServiceServer).AuthorizationRPC(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.AAAPrivateService/AuthorizationRPC",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AAAPrivateServiceServer).AuthorizationRPC(ctx, req.(*AAAServiceCall))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AAAPrivateService_AccountingRPC_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AAAEventCall)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AAAPrivateServiceServer).AccountingRPC(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/pb.AAAPrivateService/AccountingRPC",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AAAPrivateServiceServer).AccountingRPC(ctx, req.(*AAAEventCall))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _AAAPrivateService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.AAAPrivateService",
 	HandlerType: (*AAAPrivateServiceServer)(nil),
@@ -243,6 +417,14 @@ var _AAAPrivateService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AuthenticationRPC",
 			Handler:    _AAAPrivateService_AuthenticationRPC_Handler,
+		},
+		{
+			MethodName: "AuthorizationRPC",
+			Handler:    _AAAPrivateService_AuthorizationRPC_Handler,
+		},
+		{
+			MethodName: "AccountingRPC",
+			Handler:    _AAAPrivateService_AccountingRPC_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -252,21 +434,29 @@ var _AAAPrivateService_serviceDesc = grpc.ServiceDesc{
 func init() { proto.RegisterFile("He.proto", fileDescriptor2) }
 
 var fileDescriptor2 = []byte{
-	// 255 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x91, 0x3f, 0x4b, 0x03, 0x41,
-	0x10, 0xc5, 0xcd, 0x49, 0x24, 0x19, 0x44, 0x2e, 0xcb, 0x15, 0x87, 0x58, 0xc8, 0x62, 0x61, 0x75,
-	0x45, 0x6c, 0x14, 0x6c, 0x26, 0x29, 0x4c, 0x25, 0xe1, 0x14, 0x2b, 0x9b, 0xbd, 0xcb, 0x60, 0x86,
-	0x5b, 0x77, 0x8f, 0x75, 0x2f, 0xe0, 0xb7, 0x97, 0xfb, 0x13, 0x96, 0x98, 0x74, 0xfb, 0xde, 0xf2,
-	0x7e, 0x6f, 0x98, 0x81, 0xc9, 0x8a, 0xb2, 0xda, 0x59, 0x6f, 0x45, 0x54, 0x17, 0x72, 0x01, 0x09,
-	0x22, 0xbe, 0x90, 0x21, 0xa7, 0x3c, 0xbd, 0xdb, 0x8a, 0xcc, 0x52, 0x69, 0x2d, 0x12, 0x18, 0xd3,
-	0xb7, 0x62, 0x9d, 0x8e, 0x6e, 0x47, 0xf7, 0xd3, 0xbc, 0x17, 0xad, 0x5b, 0x6f, 0xad, 0xa1, 0x34,
-	0xea, 0xdd, 0x4e, 0xc8, 0xc7, 0x63, 0xc6, 0x42, 0x95, 0x95, 0xb8, 0x82, 0x88, 0x37, 0x03, 0x20,
-	0xe2, 0x8d, 0x88, 0xe1, 0xbc, 0xa2, 0xdf, 0x21, 0xdb, 0x3e, 0xe5, 0x33, 0x5c, 0x22, 0x62, 0x68,
-	0xfd, 0x9f, 0xb8, 0x81, 0xe9, 0x0f, 0x7f, 0x19, 0xe5, 0x1b, 0xb7, 0xef, 0x0c, 0x86, 0xbc, 0x0b,
-	0xe9, 0xae, 0x2f, 0x81, 0xf1, 0x87, 0xd2, 0x03, 0x60, 0x92, 0xf7, 0x62, 0xfe, 0x09, 0x31, 0x22,
-	0xae, 0x9b, 0x42, 0x73, 0xf9, 0x46, 0x6e, 0xc7, 0x25, 0x89, 0x15, 0xc4, 0x07, 0xe3, 0xe6, 0xeb,
-	0xa5, 0x48, 0xb3, 0xba, 0xc8, 0x4e, 0xed, 0xe2, 0xfa, 0xe4, 0x4f, 0xdb, 0x28, 0xcf, 0xe6, 0xaf,
-	0x30, 0x6b, 0xe9, 0x8e, 0x77, 0xca, 0xd3, 0x1e, 0xff, 0x04, 0x33, 0x6c, 0xfc, 0x96, 0x8c, 0xe7,
-	0x52, 0x79, 0xb6, 0x1d, 0x3f, 0x1e, 0x28, 0x81, 0x7b, 0xe0, 0xf4, 0xbc, 0xe2, 0xa2, 0x3b, 0xcd,
-	0xc3, 0x5f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xcc, 0xb1, 0x24, 0x00, 0xa6, 0x01, 0x00, 0x00,
+	// 375 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x93, 0xcd, 0x6a, 0xdb, 0x40,
+	0x14, 0x85, 0x2b, 0xb9, 0xf5, 0xcf, 0xc5, 0x35, 0xf2, 0x60, 0x8a, 0x10, 0x5d, 0x14, 0xad, 0xba,
+	0xf2, 0xc2, 0xa5, 0x85, 0x16, 0x63, 0x18, 0x9b, 0x52, 0x2f, 0xba, 0x30, 0x4a, 0xc8, 0x2a, 0x9b,
+	0x91, 0x7c, 0xb1, 0x07, 0x2b, 0x33, 0x42, 0x1a, 0x19, 0x92, 0xd7, 0xcb, 0x8b, 0x05, 0x8d, 0x46,
+	0x3f, 0x4e, 0xe4, 0x4d, 0x76, 0x73, 0xcf, 0xd5, 0x77, 0xce, 0x41, 0x23, 0xc1, 0x70, 0x8b, 0xf3,
+	0x24, 0x95, 0x4a, 0x12, 0x3b, 0x09, 0xfd, 0x35, 0xcc, 0x28, 0xa5, 0xff, 0x50, 0x60, 0xca, 0x14,
+	0xde, 0xca, 0x13, 0x8a, 0x0d, 0x8b, 0x63, 0x32, 0x83, 0x4f, 0xf8, 0xc0, 0x78, 0xec, 0x5a, 0xdf,
+	0xac, 0xef, 0xa3, 0xa0, 0x1c, 0x0a, 0x35, 0x39, 0x4a, 0x81, 0xae, 0x5d, 0xaa, 0x7a, 0xf0, 0xff,
+	0xbf, 0xf5, 0x58, 0xb3, 0xe8, 0x44, 0x08, 0x7c, 0x8c, 0xe4, 0x1e, 0xb5, 0x45, 0x2f, 0xd0, 0x67,
+	0x32, 0x01, 0x9b, 0xef, 0x0d, 0x6e, 0xf3, 0x3d, 0x71, 0xa0, 0x77, 0xc2, 0x47, 0xb7, 0xa7, 0x85,
+	0xe2, 0xe8, 0x2f, 0x61, 0x4c, 0x29, 0x6d, 0x9a, 0x94, 0x84, 0x55, 0x13, 0x5f, 0x61, 0x94, 0xf1,
+	0x83, 0x60, 0x2a, 0x4f, 0xab, 0x1e, 0x8d, 0xd0, 0xa6, 0xaf, 0x76, 0x70, 0x61, 0xc0, 0xb3, 0x3b,
+	0x16, 0x9b, 0x22, 0xc3, 0xa0, 0x1a, 0xfd, 0x3f, 0x30, 0xa1, 0x94, 0xde, 0x60, 0x7a, 0xe6, 0x11,
+	0x76, 0xa6, 0xbb, 0x30, 0xc8, 0xca, 0xb5, 0xc9, 0xae, 0x46, 0x7f, 0xd5, 0x66, 0xdf, 0x91, 0xfd,
+	0x4b, 0x37, 0xff, 0x7b, 0x46, 0xa1, 0x3a, 0x93, 0xbf, 0x40, 0x1f, 0x8b, 0x65, 0xa6, 0xc1, 0x71,
+	0x60, 0x26, 0x7f, 0xd5, 0x70, 0x57, 0x53, 0x3d, 0x18, 0xf2, 0x2c, 0x40, 0xad, 0x97, 0xb1, 0xf5,
+	0xbc, 0xb8, 0x07, 0x87, 0x52, 0xba, 0xcb, 0xc3, 0x98, 0x47, 0xa6, 0x3d, 0xd9, 0x82, 0x73, 0x71,
+	0x9d, 0xc1, 0x6e, 0x43, 0xdc, 0x79, 0x12, 0xce, 0xbb, 0xbe, 0x15, 0xaf, 0x73, 0x53, 0x74, 0xf1,
+	0x3f, 0x2c, 0x9e, 0x2d, 0x98, 0x16, 0xf6, 0x29, 0x3f, 0x33, 0x85, 0x95, 0xff, 0x6f, 0x98, 0xd2,
+	0x5c, 0x1d, 0x51, 0x28, 0x1e, 0x31, 0xc5, 0xa5, 0x0e, 0x70, 0x8c, 0x4d, 0x63, 0x7c, 0xa1, 0x94,
+	0x86, 0x64, 0x09, 0x4e, 0x81, 0xca, 0x94, 0x3f, 0xd5, 0x24, 0x31, 0xcf, 0xb5, 0x2e, 0xce, 0x7b,
+	0xa5, 0x19, 0xfa, 0x27, 0x7c, 0xa6, 0x51, 0x24, 0x73, 0xa1, 0xb8, 0x38, 0xb4, 0x43, 0xeb, 0xf7,
+	0xee, 0x5d, 0x28, 0x25, 0x16, 0xf6, 0xf5, 0x0f, 0xf3, 0xe3, 0x25, 0x00, 0x00, 0xff, 0xff, 0x0a,
+	0x8b, 0x9f, 0x50, 0x3c, 0x03, 0x00, 0x00,
 }

@@ -16,8 +16,9 @@ message AAAGenerateTokenCall {
 }
 
 message AAAGenerateTokenBack {
-  string id = 1;
-  string key = 2;
+  int64 code = 1;
+  string id = 2;
+  string key = 3;
 }
 
 message AAATokenCall {
@@ -26,7 +27,28 @@ message AAATokenCall {
 }
 
 message AAATokenBack {
-  bool Valid = 1;
+  int64 code = 1;
+  bool isValid = 2;
+}
+
+message AAAServiceCall {
+  string id = 1;
+  string service = 2;
+}
+
+message AAAServiceBack {
+  int64 code = 1;
+  bool isValid = 2;
+}
+
+message AAAEventCall {
+  string id = 1;
+  bytes events = 2;
+}
+
+message AAAEventBack {
+  int64 code = 1;
+  bool isRecode = 2;
 }
 
 service AAAPublicService {
@@ -35,6 +57,6 @@ service AAAPublicService {
 
 service AAAPrivateService {
   rpc AuthenticationRPC(AAATokenCall) returns (AAATokenBack){}
-//  rpc AuthorizationRPC(AAATokenCall) returns (AAATokenBack){}
-//  rpc AccountingRPC(AAATokenCall) returns (AAATokenBack){}
+  rpc AuthorizationRPC(AAAServiceCall) returns (AAAServiceBack){}
+  rpc AccountingRPC(AAAEventCall) returns (AAAEventBack){}
 }

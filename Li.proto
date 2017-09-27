@@ -11,19 +11,18 @@ syntax = "proto3";
 package pb;
 
 message CloudAPICall {
-  string service = 1;
-  string action = 2;
-  string region = 3;
-  string cloudId = 4;
-  string cloudKey = 5;
-  string cloud = 6;
+  string cloud = 1;
+  string service = 2;
+  string action = 3;
+  string region = 4;
+  string cloudId = 5;
+  string cloudKey = 6;
   map<string,string> params = 7;
 }
 
 message CloudAPIBack {
-  int32 code = 1;
-  string msg = 2;
-  bytes data = 3;
+  int64 code = 1;
+  bytes data = 2;
 }
 
 message CloudTokenCall {
@@ -35,8 +34,9 @@ message CloudTokenCall {
 }
 
 message CloudTokenBack {
-  string id = 1;
-  string key = 2;
+  int64 code = 1;
+  string id = 2;
+  string key = 3;
 }
 
 service CloudAPIService {
@@ -44,6 +44,6 @@ service CloudAPIService {
 }
 
 service CloudTokenService {
-  rpc tokenSet(CloudTokenCall) returns (CloudTokenBack) {}
-  rpc tokenGet(CloudTokenCall) returns (CloudTokenBack) {}
+  rpc SetRPC(CloudTokenCall) returns (CloudTokenBack) {}
+  rpc GetRPC(CloudTokenCall) returns (CloudTokenBack) {}
 } 

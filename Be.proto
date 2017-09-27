@@ -13,7 +13,21 @@ package pb;
 message AssetTemplateCall {
   string id = 1;
   string name = 2;
-  map<string,string> param = 3;
+  bytes params = 3;
+}
+
+message AssetTemplateBack {
+  int64 code = 1;
+}
+
+message AssetCustomizeCall {
+  string id = 1;
+  string cloud = 2;
+  bytes params = 3;
+}
+
+message AssetCustomizeBack {
+  int64 code = 1;
 }
 
 message AssetSynchronizeCall {
@@ -23,22 +37,17 @@ message AssetSynchronizeCall {
   bytes data = 4;
 }
 
-message AssetCustomCall {
-  string id = 1;
-  string cloud = 2;
-  map<string,string> param = 3;
-}
-
-message AssetMsgBack {
+message AssetSynchronizeBack {
   int64 code = 1;
-  string msg = 2;
+  string nextToken = 2;
+  int64 totalCount = 3;
 }
 
 service AssetService {
-  rpc SynchronizeRPC(AssetSynchronizeCall) returns (AssetMsgBack) {};
-  rpc CustomRPC(AssetCustomCall) returns (AssetMsgBack) {};
+  rpc SynchronizeRPC(AssetSynchronizeCall) returns (AssetSynchronizeBack) {};
+  rpc CustomRPC(AssetCustomizeCall) returns (AssetCustomizeBack) {};
 }
 
 service TemplateService {
-  rpc CreateRPC(AssetTemplateCall) returns (AssetMsgBack) {};  
+  rpc CreateRPC(AssetTemplateCall) returns (AssetTemplateBack) {};  
 }

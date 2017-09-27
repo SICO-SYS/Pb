@@ -18,13 +18,19 @@ It has these top-level messages:
 	ConfigPullCall
 	ConfigPullBack
 	AssetTemplateCall
+	AssetTemplateBack
+	AssetCustomizeCall
+	AssetCustomizeBack
 	AssetSynchronizeCall
-	AssetCustomCall
-	AssetMsgBack
+	AssetSynchronizeBack
 	AAAGenerateTokenCall
 	AAAGenerateTokenBack
 	AAATokenCall
 	AAATokenBack
+	AAAServiceCall
+	AAAServiceBack
+	AAAEventCall
+	AAAEventBack
 	CloudAPICall
 	CloudAPIBack
 	CloudTokenCall
