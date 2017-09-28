@@ -39,10 +39,16 @@ message CloudTokenBack {
   string key = 3;
 }
 
+/* 
+  Available from 0.1.0
+*/
 service CloudAPIService {
   rpc RequestRPC(CloudAPICall) returns (CloudAPIBack) {}
 }
 
+/* 
+  Available from 0.1.0
+*/
 service CloudTokenService {
   rpc SetRPC(CloudTokenCall) returns (CloudTokenBack) {}
   rpc GetRPC(CloudTokenCall) returns (CloudTokenBack) {}

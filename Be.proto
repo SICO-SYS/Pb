@@ -43,11 +43,17 @@ message AssetSynchronizeBack {
   int64 totalCount = 3;
 }
 
+/* 
+  Available from 0.1.0
+*/
 service AssetService {
   rpc SynchronizeRPC(AssetSynchronizeCall) returns (AssetSynchronizeBack) {};
   rpc CustomRPC(AssetCustomizeCall) returns (AssetCustomizeBack) {};
 }
 
+/* 
+  Available from 0.1.0
+*/
 service TemplateService {
   rpc CreateRPC(AssetTemplateCall) returns (AssetTemplateBack) {};  
 }

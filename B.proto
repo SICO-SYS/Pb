@@ -30,6 +30,9 @@ message ConfigPullBack {
   bytes params = 2;
 }
 
+/* 
+  Available from 0.1.0
+*/
 service ConfigService {
   rpc PushRPC(ConfigPushCall) returns (ConfigPushBack) {};
   rpc PullRPC(ConfigPullCall) returns (ConfigPullBack) {};

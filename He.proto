@@ -51,12 +51,31 @@ message AAAEventBack {
   bool isRecode = 2;
 }
 
+/* 
+  Available from 0.1.0
+  DEPRECATED after 1.0.0
+*/
 service AAAPublicService {
   rpc GenerateTokenRPC(AAAGenerateTokenCall) returns (AAAGenerateTokenBack){}
 }
 
+/* 
+  Available from 0.1.0
+  DEPRECATED after 1.0.0
+*/
 service AAAPrivateService {
   rpc AuthenticationRPC(AAATokenCall) returns (AAATokenBack){}
   rpc AuthorizationRPC(AAAServiceCall) returns (AAAServiceBack){}
   rpc AccountingRPC(AAAEventCall) returns (AAAEventBack){}
 }
+
+/* 
+  Available from 1.0.1
+*/
+service AAATokenService {
+  rpc GenerateRPC(AAAGenerateTokenCall) returns (AAAGenerateTokenBack){}
+  rpc AuthenticationRPC(AAATokenCall) returns (AAATokenBack){}
+  rpc AuthorizationRPC(AAAServiceCall) returns (AAAServiceBack){}
+  rpc AccountingRPC(AAAEventCall) returns (AAAEventBack){}
+}
+
