@@ -8,6 +8,7 @@ Package pb is a generated protocol buffer package.
 It is generated from these files:
 	B.proto
 	Be.proto
+	C.proto
 	He.proto
 	Li.proto
 	general.proto
@@ -23,6 +24,12 @@ It has these top-level messages:
 	AssetCustomizeBack
 	AssetSynchronizeCall
 	AssetSynchronizeBack
+	HookCreateCall
+	HookCreateBack
+	HookQueryCall
+	HookQueryBack
+	HookReceiveCall
+	HookReceiveBack
 	AAAGenerateTokenCall
 	AAAGenerateTokenBack
 	AAATokenCall

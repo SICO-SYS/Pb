@@ -20,7 +20,7 @@ type GeneralMsgCall struct {
 func (m *GeneralMsgCall) Reset()                    { *m = GeneralMsgCall{} }
 func (m *GeneralMsgCall) String() string            { return proto.CompactTextString(m) }
 func (*GeneralMsgCall) ProtoMessage()               {}
-func (*GeneralMsgCall) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
+func (*GeneralMsgCall) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{0} }
 
 func (m *GeneralMsgCall) GetCode() int64 {
 	if m != nil {
@@ -37,7 +37,7 @@ type GeneralMsgBack struct {
 func (m *GeneralMsgBack) Reset()                    { *m = GeneralMsgBack{} }
 func (m *GeneralMsgBack) String() string            { return proto.CompactTextString(m) }
 func (*GeneralMsgBack) ProtoMessage()               {}
-func (*GeneralMsgBack) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{1} }
+func (*GeneralMsgBack) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{1} }
 
 func (m *GeneralMsgBack) GetCode() int64 {
 	if m != nil {
@@ -58,9 +58,9 @@ func init() {
 	proto.RegisterType((*GeneralMsgBack)(nil), "pb.GeneralMsgBack")
 }
 
-func init() { proto.RegisterFile("general.proto", fileDescriptor4) }
+func init() { proto.RegisterFile("general.proto", fileDescriptor5) }
 
-var fileDescriptor4 = []byte{
+var fileDescriptor5 = []byte{
 	// 105 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4d, 0x4f, 0xcd, 0x4b,
 	0x2d, 0x4a, 0xcc, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x2a, 0x48, 0x52, 0x52, 0xe1,

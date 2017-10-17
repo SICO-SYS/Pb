@@ -26,7 +26,7 @@ type AAAGenerateTokenCall struct {
 func (m *AAAGenerateTokenCall) Reset()                    { *m = AAAGenerateTokenCall{} }
 func (m *AAAGenerateTokenCall) String() string            { return proto.CompactTextString(m) }
 func (*AAAGenerateTokenCall) ProtoMessage()               {}
-func (*AAAGenerateTokenCall) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+func (*AAAGenerateTokenCall) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
 
 func (m *AAAGenerateTokenCall) GetEmail() string {
 	if m != nil {
@@ -51,7 +51,7 @@ type AAAGenerateTokenBack struct {
 func (m *AAAGenerateTokenBack) Reset()                    { *m = AAAGenerateTokenBack{} }
 func (m *AAAGenerateTokenBack) String() string            { return proto.CompactTextString(m) }
 func (*AAAGenerateTokenBack) ProtoMessage()               {}
-func (*AAAGenerateTokenBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (*AAAGenerateTokenBack) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{1} }
 
 func (m *AAAGenerateTokenBack) GetCode() int64 {
 	if m != nil {
@@ -82,7 +82,7 @@ type AAATokenCall struct {
 func (m *AAATokenCall) Reset()                    { *m = AAATokenCall{} }
 func (m *AAATokenCall) String() string            { return proto.CompactTextString(m) }
 func (*AAATokenCall) ProtoMessage()               {}
-func (*AAATokenCall) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+func (*AAATokenCall) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{2} }
 
 func (m *AAATokenCall) GetId() string {
 	if m != nil {
@@ -106,7 +106,7 @@ type AAATokenBack struct {
 func (m *AAATokenBack) Reset()                    { *m = AAATokenBack{} }
 func (m *AAATokenBack) String() string            { return proto.CompactTextString(m) }
 func (*AAATokenBack) ProtoMessage()               {}
-func (*AAATokenBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
+func (*AAATokenBack) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{3} }
 
 func (m *AAATokenBack) GetCode() int64 {
 	if m != nil {
@@ -130,7 +130,7 @@ type AAAServiceCall struct {
 func (m *AAAServiceCall) Reset()                    { *m = AAAServiceCall{} }
 func (m *AAAServiceCall) String() string            { return proto.CompactTextString(m) }
 func (*AAAServiceCall) ProtoMessage()               {}
-func (*AAAServiceCall) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
+func (*AAAServiceCall) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{4} }
 
 func (m *AAAServiceCall) GetId() string {
 	if m != nil {
@@ -154,7 +154,7 @@ type AAAServiceBack struct {
 func (m *AAAServiceBack) Reset()                    { *m = AAAServiceBack{} }
 func (m *AAAServiceBack) String() string            { return proto.CompactTextString(m) }
 func (*AAAServiceBack) ProtoMessage()               {}
-func (*AAAServiceBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{5} }
+func (*AAAServiceBack) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{5} }
 
 func (m *AAAServiceBack) GetCode() int64 {
 	if m != nil {
@@ -178,7 +178,7 @@ type AAAEventCall struct {
 func (m *AAAEventCall) Reset()                    { *m = AAAEventCall{} }
 func (m *AAAEventCall) String() string            { return proto.CompactTextString(m) }
 func (*AAAEventCall) ProtoMessage()               {}
-func (*AAAEventCall) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{6} }
+func (*AAAEventCall) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{6} }
 
 func (m *AAAEventCall) GetId() string {
 	if m != nil {
@@ -202,7 +202,7 @@ type AAAEventBack struct {
 func (m *AAAEventBack) Reset()                    { *m = AAAEventBack{} }
 func (m *AAAEventBack) String() string            { return proto.CompactTextString(m) }
 func (*AAAEventBack) ProtoMessage()               {}
-func (*AAAEventBack) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{7} }
+func (*AAAEventBack) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{7} }
 
 func (m *AAAEventBack) GetCode() int64 {
 	if m != nil {
@@ -594,9 +594,9 @@ var _AAATokenService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "He.proto",
 }
 
-func init() { proto.RegisterFile("He.proto", fileDescriptor2) }
+func init() { proto.RegisterFile("He.proto", fileDescriptor3) }
 
-var fileDescriptor2 = []byte{
+var fileDescriptor3 = []byte{
 	// 396 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x54, 0xcd, 0xae, 0xd2, 0x40,
 	0x14, 0xb6, 0x45, 0xf9, 0x39, 0x22, 0x96, 0x09, 0x31, 0x4d, 0xe3, 0xc2, 0x74, 0xe5, 0x8a, 0x05,
