@@ -1,0 +1,47 @@
+/*
+
+LICENSE:  MIT
+Author:   sine
+Email:    sinerwr@gmail.com
+
+*/
+
+syntax = "proto3";
+
+package pb;
+
+message HookCreateCall {
+  string hooktype = 1;
+  bool rename = 2; 
+}
+
+message HookCreateBack {
+  int64 code = 1;
+  string hookname = 2;
+}
+
+message HookQueryCall {
+  string hookname = 1;
+}
+
+message HookQueryBack {
+  int64 code = 1;
+  string hookid = 2;
+}
+
+message HookReceiveCall {
+  string hookname = 1;
+  bytes payload = 2;
+}
+
+message HookReceiveBack {
+  int64 code = 1;
+  string hookid = 2;
+  bytes params = 3;
+}
+
+service HookService {
+  rpc CreateRPC(HookCreateCall) returns (HookCreateBack) {};
+  rpc QueryRPC(HookQueryCall) returns (HookQueryBack) {};
+  rpc ReceiveRPC(HookReceiveCall) returns (HookReceiveBack) {};
+}
