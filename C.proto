@@ -11,8 +11,9 @@ syntax = "proto3";
 package pb;
 
 message HookCreateCall {
-  string hooktype = 1;
-  bool rename = 2; 
+  string id = 1;
+  string hooktype = 2;
+  string hookname = 3; 
 }
 
 message HookCreateBack {
