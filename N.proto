@@ -1,0 +1,41 @@
+/*
+
+LICENSE:  MIT
+Author:   sine
+Email:    sinerwr@gmail.com
+
+*/
+
+syntax = "proto3";
+
+package pb;
+
+message OrchestrationCreateCall {
+  string hookid = 1;
+  string project = 2;
+  string key = 3;
+  string value = 4;
+  string belong = 5;
+  repeated string task = 6;
+}
+
+message OrchestrationCreateBack {
+  int64 code = 1;
+}
+
+message OrchestrationCheckCall {
+  string id = 1;
+  string hookid = 2;
+  string type = 3;
+  bytes params = 4;
+}
+
+message OrchestrationCheckBack {
+  int64 code = 1;
+  repeated string task = 2;
+}
+
+service OrchestrationService {
+  rpc CreateRPC(OrchestrationCreateCall) returns (OrchestrationCreateBack) {};
+  rpc CheckRPC(OrchestrationCheckCall) returns (OrchestrationCheckBack) {};
+}

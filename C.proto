@@ -13,7 +13,6 @@ package pb;
 message HookCreateCall {
   string id = 1;
   string hooktype = 2;
-  string hookname = 3; 
 }
 
 message HookCreateBack {
@@ -28,11 +27,33 @@ message HookQueryCall {
 message HookQueryBack {
   int64 code = 1;
   string hookid = 2;
+  string hooktype = 3;
+  string belong = 4;
+}
+
+message HookAuthCall {
+  string id = 1;
+  string hookname = 2;
+}
+
+message HookAuthBack {
+  int64 code = 1;
+  string hookid = 2;
+}
+
+message HookUpdateNameCall {
+  string hookid = 1;
+}
+
+message HookUpdateNameBack {
+  int64 code = 1;
+  string hookname = 2;
 }
 
 message HookReceiveCall {
   string hookname = 1;
-  bytes payload = 2;
+  string hooktype = 2;
+  bytes payload = 3;
 }
 
 message HookReceiveBack {
@@ -42,7 +63,9 @@ message HookReceiveBack {
 }
 
 service HookService {
+  rpc AuthRPC(HookAuthCall) returns (HookAuthBack) {};
   rpc CreateRPC(HookCreateCall) returns (HookCreateBack) {};
   rpc QueryRPC(HookQueryCall) returns (HookQueryBack) {};
+  rpc UpdateNameRPC(HookUpdateNameCall) returns (HookUpdateNameBack) {};
   rpc ReceiveRPC(HookReceiveCall) returns (HookReceiveBack) {};
 }

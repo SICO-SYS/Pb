@@ -11,6 +11,7 @@ It is generated from these files:
 	C.proto
 	He.proto
 	Li.proto
+	N.proto
 	general.proto
 
 It has these top-level messages:
@@ -28,6 +29,10 @@ It has these top-level messages:
 	HookCreateBack
 	HookQueryCall
 	HookQueryBack
+	HookAuthCall
+	HookAuthBack
+	HookUpdateNameCall
+	HookUpdateNameBack
 	HookReceiveCall
 	HookReceiveBack
 	AAAGenerateTokenCall
@@ -42,6 +47,10 @@ It has these top-level messages:
 	CloudAPIBack
 	CloudTokenCall
 	CloudTokenBack
+	OrchestrationCreateCall
+	OrchestrationCreateBack
+	OrchestrationCheckCall
+	OrchestrationCheckBack
 	GeneralMsgCall
 	GeneralMsgBack
 */
